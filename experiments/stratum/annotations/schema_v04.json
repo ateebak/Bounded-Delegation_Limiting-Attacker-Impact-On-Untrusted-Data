@@ -1,0 +1,193 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "Delegated-authority annotation record (handbook v0.4)",
+ "type": "object",
+ "additionalProperties": false,
+ "required": [
+  "task_key",
+  "variant",
+  "annotator",
+  "date",
+  "stratum_decision",
+  "fields",
+  "handbook_version"
+ ],
+ "properties": {
+  "task_key": {
+   "type": "string",
+   "pattern": "^[a-z]+__user_task_(ext)?[0-9]+$"
+  },
+  "variant": {
+   "enum": [
+    "original"
+   ]
+  },
+  "annotator": {
+   "enum": [
+    "A",
+    "B",
+    "C",
+    "gold"
+   ]
+  },
+  "date": {
+   "type": "string"
+  },
+  "stratum_decision": {
+   "enum": [
+    "include",
+    "exclude",
+    "ambiguous"
+   ],
+   "description": "include = at least one delegated sensitive field an attacker could plausibly write"
+  },
+  "task_notes": {
+   "type": "string"
+  },
+  "fields": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+     "call",
+     "arg",
+     "delegation_explicitness",
+     "attacker_can_write_value",
+     "trusted_corroboration_available",
+     "param_role",
+     "harm_if_attacker_controlled",
+     "reversible",
+     "legitimate_value_constraints",
+     "fixture_validity",
+     "partial_success",
+     "confidence",
+     "clarification_nosuspicion",
+     "clarification_cautious"
+    ],
+    "properties": {
+     "call": {
+      "type": "string",
+      "description": "tool name of the ground-truth call"
+     },
+     "arg": {
+      "type": "string"
+     },
+     "delegation_explicitness": {
+      "enum": [
+       "explicit",
+       "implicit",
+       "none"
+      ]
+     },
+     "source_named": {
+      "type": "string"
+     },
+     "attacker_can_write_value": {
+      "enum": [
+       "yes",
+       "no",
+       "unclear"
+      ]
+     },
+     "attacker_write_reason": {
+      "type": "string"
+     },
+     "trusted_corroboration_available": {
+      "enum": [
+       "yes",
+       "no",
+       "unclear"
+      ]
+     },
+     "corroboration_location": {
+      "type": "string"
+     },
+     "param_role": {
+      "enum": [
+       "destination",
+       "magnitude",
+       "object",
+       "free_text",
+       "ui_element"
+      ]
+     },
+     "harm_if_attacker_controlled": {
+      "enum": [
+       "critical",
+       "high",
+       "moderate",
+       "low"
+      ]
+     },
+     "reversible": {
+      "enum": [
+       "yes",
+       "no",
+       "partial"
+      ]
+     },
+     "legitimate_value_constraints": {
+      "type": "object",
+      "description": "constraints derivable from the prompt and trusted records only, e.g. {\"amount_max\": 100, \"recipient_in\": \"contacts\"}"
+     },
+     "fixture_validity": {
+      "type": "string",
+      "pattern": "^(valid|n/a|invalid:(iban_checksum|iban_length|iban_country|email_syntax|hostname|missing_currency|impossible_date)(\\+(iban_checksum|iban_length|iban_country|email_syntax|hostname|missing_currency|impossible_date))*)$"
+     },
+     "partial_success": {
+      "type": "string"
+     },
+     "confidence": {
+      "enum": [
+       1,
+       2,
+       3
+      ]
+     },
+     "notes": {
+      "type": "string"
+     },
+     "clarification_nosuspicion": {
+      "enum": [
+       "yes",
+       "no"
+      ]
+     },
+     "clarification_cautious": {
+      "enum": [
+       "yes",
+       "no"
+      ]
+     }
+    }
+   }
+  },
+  "handbook_version": {
+   "enum": [
+    "v0.4"
+   ]
+  },
+  "substratum": {
+   "enum": [
+    "main",
+    "local_record",
+    "counterparty_amount",
+    "plan_level",
+    "none"
+   ]
+  },
+  "label": {
+   "enum": [
+    "native",
+    "extension"
+   ]
+  },
+  "excluded_reason": {
+   "type": "string"
+  },
+  "provenance": {
+   "type": "object"
+  }
+ }
+}

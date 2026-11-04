@@ -1,0 +1,945 @@
+{
+ "_doc": "Episodes that must be excluded from every analysis, with reasons. Analysis code must read this file.",
+ "invalid": [
+  {
+   "run_id": "20261001T052659Z-2c2c64",
+   "episode": "travel__user_task_ext1__clean",
+   "reason": "runner bug: matched workspace ext1 prompt (fixed 2026-10-01)"
+  },
+  {
+   "run_id": "20261001T052658Z-2bf7ef",
+   "episode": "travel__user_task_ext1__clean",
+   "reason": "runner bug: matched workspace ext1 prompt (fixed 2026-10-01)"
+  },
+  {
+   "run_id": "*",
+   "episode": "dailylife__user_task_10__*",
+   "reason": "env bug: payee IBAN absent from bank_database; no agent can pass (oracle_issues.md \u00a74, D-027)"
+  },
+  {
+   "run_id": "20261001T063347Z-6f8485",
+   "episode": "*",
+   "reason": "Anthropic SDK 1.x TypeError (AutoDojo passed removed sampling params); fixed via llm_adapters.py; $0 spent"
+  },
+  {
+   "run_id": "20261001T063347Z-5852d7",
+   "episode": "*",
+   "reason": "gpt-6.1-sol rejects tools on Chat Completions; fixed with the Responses-API adapter; $0 spent"
+  },
+  {
+   "run_id": "20261001T063523Z-48a002",
+   "episode": "*",
+   "reason": "api smoke test; final_text included a thinking block (extraction fixed)"
+  },
+  {
+   "run_id": "*",
+   "episode": "github__user_task_11__*",
+   "reason": "broken success check (oracle_issues.md \u00a74, D-027): utility unreliable"
+  },
+  {
+   "run_id": "*",
+   "episode": "github__user_task_5__*",
+   "reason": "broken success check (oracle_issues.md \u00a74, D-027): utility unreliable"
+  },
+  {
+   "run_id": "*",
+   "episode": "github__user_task_7__*",
+   "reason": "broken success check (oracle_issues.md \u00a74, D-027): utility unreliable"
+  },
+  {
+   "run_id": "*",
+   "episode": "github__user_task_8__*",
+   "reason": "broken success check (oracle_issues.md \u00a74, D-027): utility unreliable"
+  },
+  {
+   "run_id": "*",
+   "episode": "shopping__user_task_6__*",
+   "reason": "broken success check (oracle_issues.md \u00a74, D-027): utility unreliable"
+  },
+  {
+   "run_id": "*",
+   "episode": "shopping__user_task_19__*",
+   "reason": "broken success check (oracle_issues.md \u00a74, D-027): utility unreliable"
+  },
+  {
+   "run_id": "*",
+   "episode": "shopping__user_task_4__*",
+   "reason": "broken success check (oracle_issues.md \u00a74, D-027): utility unreliable"
+  },
+  {
+   "run_id": "20261001T103643Z-340f42",
+   "episode": "*",
+   "reason": "pilot partial run abandoned (restarted as two parallel lanes); incomplete"
+  },
+  {
+   "run_id": "20261001T103905Z-08197f",
+   "episode": "*",
+   "reason": "pilot bounded-llm lane stopped: perfect simulator compared non-sensitive fields and used original-tree legit values under fc (fixed 2026-10-01, D-028); incomplete"
+  },
+  {
+   "run_id": "20261001T103425Z-62343a",
+   "episode": "*",
+   "reason": "perfect-simulator bug (D-028); superseded by 20261001T104149Z-472075"
+  },
+  {
+   "run_id": "20261002T102401Z-63b481",
+   "episode": "*",
+   "reason": "compiler-v3 lane stopped early: v3 not adopted (D-034); capacity moved to the D-035 'ask' lanes; incomplete"
+  },
+  {
+   "run_id": "20261005T062130Z-27f511",
+   "episode": "*",
+   "reason": "stage 1b first attempt: OpenAI gpt-4o rate limits (429) silently skipped Progent policy updates (SECAGENT_IGNORE_UPDATE_ERROR); stopped and re-run with backoff (D-040)"
+  },
+  {
+   "run_id": "20261005T062130Z-0d9fce",
+   "episode": "*",
+   "reason": "stage 1b first attempt: OpenAI gpt-4o rate limits (429) silently skipped Progent policy updates (SECAGENT_IGNORE_UPDATE_ERROR); stopped and re-run with backoff (D-040)"
+  },
+  {
+   "run_id": "20261005T062130Z-1bd76f",
+   "episode": "*",
+   "reason": "stage 1b first attempt: OpenAI gpt-4o rate limits (429) silently skipped Progent policy updates (SECAGENT_IGNORE_UPDATE_ERROR); stopped and re-run with backoff (D-040)"
+  },
+  {
+   "run_id": "20261005T062130Z-6aa72e",
+   "episode": "*",
+   "reason": "stage 1b first attempt: OpenAI gpt-4o rate limits (429) silently skipped Progent policy updates (SECAGENT_IGNORE_UPDATE_ERROR); stopped and re-run with backoff (D-040)"
+  },
+  {
+   "run_id": "20261005T062130Z-2f866f",
+   "episode": "*",
+   "reason": "stage 1b first attempt: OpenAI gpt-4o rate limits (429) silently skipped Progent policy updates (SECAGENT_IGNORE_UPDATE_ERROR); stopped and re-run with backoff (D-040)"
+  },
+  {
+   "run_id": "20261005T062130Z-536377",
+   "episode": "*",
+   "reason": "stage 1b first attempt: OpenAI gpt-4o rate limits (429) silently skipped Progent policy updates (SECAGENT_IGNORE_UPDATE_ERROR); stopped and re-run with backoff (D-040)"
+  },
+  {
+   "run_id": "20261004T181407Z-b61f4e",
+   "episode": "*",
+   "reason": "F-21 plausible:0.5: plausible-p simulator used a fixed seed per episode, so every episode's first decision was the same draw (0.844): p=0.5 always rejected, p=0.9 always approved. Not a plausible-p user (D-041); re-run with per-episode seeds"
+  },
+  {
+   "run_id": "20261004T181407Z-e069a8",
+   "episode": "*",
+   "reason": "F-21 plausible:0.9: plausible-p simulator used a fixed seed per episode, so every episode's first decision was the same draw (0.844): p=0.5 always rejected, p=0.9 always approved. Not a plausible-p user (D-041); re-run with per-episode seeds"
+  },
+  {
+   "run_id": "20261005T121215Z-fa33e5",
+   "episode": "*",
+   "reason": "stage 1b Progent manual plausible:0.5: plausible-p simulator used a fixed seed per episode, so every episode's first decision was the same draw (0.844): p=0.5 always rejected, p=0.9 always approved. Not a plausible-p user (D-041); re-run with per-episode seeds"
+  },
+  {
+   "run_id": "20261005T121315Z-92c780",
+   "episode": "*",
+   "reason": "stage 1b Progent manual plausible:0.9: plausible-p simulator used a fixed seed per episode, so every episode's first decision was the same draw (0.844): p=0.5 always rejected, p=0.9 always approved. Not a plausible-p user (D-041); re-run with per-episode seeds"
+  },
+  {
+   "run_id": "20261006T002748Z-607a19",
+   "episode": "*",
+   "reason": "stage 1c hard-cap plausible lane (stopped): plausible-p simulator used a fixed seed per episode, so every episode's first decision was the same draw (0.844): p=0.5 always rejected, p=0.9 always approved. Not a plausible-p user (D-041); re-run with per-episode seeds"
+  },
+  {
+   "run_id": "20261006T002748Z-0efba6",
+   "episode": "*",
+   "reason": "stage 1c hard-cap plausible lane (stopped): plausible-p simulator used a fixed seed per episode, so every episode's first decision was the same draw (0.844): p=0.5 always rejected, p=0.9 always approved. Not a plausible-p user (D-041); re-run with per-episode seeds"
+  },
+  {
+   "run_id": "20261007T014636Z-d2dcbb",
+   "episode": "*",
+   "reason": "stage 4/5 attempt 1: NIM rate limits (429) / gateway timeouts (504) failed most episodes (6 parallel lanes on one model); re-run with retries and lower concurrency (D-042)"
+  },
+  {
+   "run_id": "20261007T014636Z-5df5c0",
+   "episode": "*",
+   "reason": "stage 4/5 attempt 1: NIM rate limits (429) / gateway timeouts (504) failed most episodes (6 parallel lanes on one model); re-run with retries and lower concurrency (D-042)"
+  },
+  {
+   "run_id": "20261006T232424Z-42d5ed",
+   "episode": "*",
+   "reason": "stage 4/5 attempt 1: NIM rate limits (429) / gateway timeouts (504) failed most episodes (6 parallel lanes on one model); re-run with retries and lower concurrency (D-042)"
+  },
+  {
+   "run_id": "20261007T014636Z-71e52d",
+   "episode": "*",
+   "reason": "stage 4/5 attempt 1: NIM rate limits (429) / gateway timeouts (504) failed most episodes (6 parallel lanes on one model); re-run with retries and lower concurrency (D-042)"
+  },
+  {
+   "run_id": "20261006T232424Z-e3dc55",
+   "episode": "*",
+   "reason": "stage 4/5 attempt 1: NIM rate limits (429) / gateway timeouts (504) failed most episodes (6 parallel lanes on one model); re-run with retries and lower concurrency (D-042)"
+  },
+  {
+   "run_id": "20261007T014636Z-fe7ad8",
+   "episode": "*",
+   "reason": "stage 4/5 attempt 1: NIM rate limits (429) / gateway timeouts (504) failed most episodes (6 parallel lanes on one model); re-run with retries and lower concurrency (D-042)"
+  },
+  {
+   "run_id": "20261006T232424Z-38748e",
+   "episode": "*",
+   "reason": "stage 4/5 attempt 1: NIM rate limits (429) / gateway timeouts (504) failed most episodes (6 parallel lanes on one model); re-run with retries and lower concurrency (D-042)"
+  },
+  {
+   "run_id": "20261006T232424Z-4f0a63",
+   "episode": "*",
+   "reason": "stage 4/5 attempt 1: NIM rate limits (429) / gateway timeouts (504) failed most episodes (6 parallel lanes on one model); re-run with retries and lower concurrency (D-042)"
+  },
+  {
+   "run_id": "20261006T232424Z-a47aaf",
+   "episode": "*",
+   "reason": "stage 4/5 attempt 1: NIM rate limits (429) / gateway timeouts (504) failed most episodes (6 parallel lanes on one model); re-run with retries and lower concurrency (D-042)"
+  },
+  {
+   "run_id": "20261006T232424Z-e84c63",
+   "episode": "*",
+   "reason": "stage 4/5 attempt 1: NIM rate limits (429) / gateway timeouts (504) failed most episodes (6 parallel lanes on one model); re-run with retries and lower concurrency (D-042)"
+  },
+  {
+   "run_id": "20261007T014636Z-853242",
+   "episode": "*",
+   "reason": "stage 4/5 attempt 1: NIM rate limits (429) / gateway timeouts (504) failed most episodes (6 parallel lanes on one model); re-run with retries and lower concurrency (D-042)"
+  },
+  {
+   "run_id": "20261007T014636Z-7b98ea",
+   "episode": "*",
+   "reason": "stage 4/5 attempt 1: NIM rate limits (429) / gateway timeouts (504) failed most episodes (6 parallel lanes on one model); re-run with retries and lower concurrency (D-042)"
+  },
+  {
+   "run_id": "20261010T205452Z-90a8dd",
+   "episode": "*",
+   "reason": "stage 6 glm-5.3-flash: 94-111 of 132 episodes per lane errored (NIM endpoint unreliable, F-31); not usable"
+  },
+  {
+   "run_id": "20261010T205452Z-730ae0",
+   "episode": "*",
+   "reason": "stage 6 glm-5.3-flash: 94-111 of 132 episodes per lane errored (NIM endpoint unreliable, F-31); not usable"
+  },
+  {
+   "run_id": "20261010T205452Z-8aee9f",
+   "episode": "*",
+   "reason": "stage 6 glm-5.3-flash: 94-111 of 132 episodes per lane errored (NIM endpoint unreliable, F-31); not usable"
+  },
+  {
+   "run_id": "20261009T215004Z-63a69a",
+   "episode": "*",
+   "reason": "stage 6 glm-5.3-flash: 94-111 of 132 episodes per lane errored (NIM endpoint unreliable, F-31); not usable"
+  },
+  {
+   "run_id": "20261009T215004Z-3eede0",
+   "episode": "*",
+   "reason": "stage 6 glm-5.3-flash: 94-111 of 132 episodes per lane errored (NIM endpoint unreliable, F-31); not usable"
+  },
+  {
+   "run_id": "20261009T215004Z-fa999d",
+   "episode": "*",
+   "reason": "stage 6 glm-5.3-flash: 94-111 of 132 episodes per lane errored (NIM endpoint unreliable, F-31); not usable"
+  },
+  {
+   "run_id": "20261012T115755Z-db8c6d",
+   "episode": "dailylife__user_task_11__clean__r0",
+   "reason": "stage 9 glm-5.3 CaMeL: NIM APITimeoutError after 7 retries; episode never ran"
+  },
+  {
+   "run_id": "20261012T115755Z-db8c6d",
+   "episode": "dailylife__user_task_11__clean__r1",
+   "reason": "stage 9 glm-5.3 CaMeL: NIM APITimeoutError after 7 retries; episode never ran"
+  },
+  {
+   "run_id": "20261012T115755Z-db8c6d",
+   "episode": "dailylife__user_task_11__clean__r2",
+   "reason": "stage 9 glm-5.3 CaMeL: NIM APITimeoutError after 7 retries; episode never ran"
+  },
+  {
+   "run_id": "20261012T115755Z-db8c6d",
+   "episode": "dailylife__user_task_11__vs_input_to_webpage.url__r1",
+   "reason": "stage 9 glm-5.3 CaMeL: NIM returned 404 for every request during an outage 2026-10-14 16:44-16:52 UTC; retry.py did not treat 404 as transient (fixed); episode never ran"
+  },
+  {
+   "run_id": "20261012T115755Z-db8c6d",
+   "episode": "dailylife__user_task_11__vs_input_to_webpage.url__r2",
+   "reason": "stage 9 glm-5.3 CaMeL: NIM returned 404 for every request during an outage 2026-10-14 16:44-16:52 UTC; retry.py did not treat 404 as transient (fixed); episode never ran"
+  },
+  {
+   "run_id": "20261012T115755Z-db8c6d",
+   "episode": "dailylife__user_task_12__clean__r0",
+   "reason": "stage 9 glm-5.3 CaMeL: NIM returned 404 for every request during an outage 2026-10-14 16:44-16:52 UTC; retry.py did not treat 404 as transient (fixed); episode never ran"
+  },
+  {
+   "run_id": "20261012T115755Z-db8c6d",
+   "episode": "dailylife__user_task_12__clean__r1",
+   "reason": "stage 9 glm-5.3 CaMeL: NIM returned 404 for every request during an outage 2026-10-14 16:44-16:52 UTC; retry.py did not treat 404 as transient (fixed); episode never ran"
+  },
+  {
+   "run_id": "20261012T115755Z-db8c6d",
+   "episode": "dailylife__user_task_12__clean__r2",
+   "reason": "stage 9 glm-5.3 CaMeL: NIM returned 404 for every request during an outage 2026-10-14 16:44-16:52 UTC; retry.py did not treat 404 as transient (fixed); episode never ran"
+  },
+  {
+   "run_id": "20261012T115755Z-db8c6d",
+   "episode": "dailylife__user_task_14__clean__r0",
+   "reason": "stage 9 glm-5.3 CaMeL: NIM returned 404 for every request during an outage 2026-10-14 16:44-16:52 UTC; retry.py did not treat 404 as transient (fixed); episode never ran"
+  },
+  {
+   "run_id": "20261012T115755Z-db8c6d",
+   "episode": "dailylife__user_task_14__clean__r1",
+   "reason": "stage 9 glm-5.3 CaMeL: NIM returned 404 for every request during an outage 2026-10-14 16:44-16:52 UTC; retry.py did not treat 404 as transient (fixed); episode never ran"
+  },
+  {
+   "run_id": "20261012T115755Z-db8c6d",
+   "episode": "dailylife__user_task_14__clean__r2",
+   "reason": "stage 9 glm-5.3 CaMeL: NIM returned 404 for every request during an outage 2026-10-14 16:44-16:52 UTC; retry.py did not treat 404 as transient (fixed); episode never ran"
+  },
+  {
+   "run_id": "20261012T115755Z-db8c6d",
+   "episode": "dailylife__user_task_14__vs_input_to_webpage.url__r0",
+   "reason": "stage 9 glm-5.3 CaMeL: NIM returned 404 for every request during an outage 2026-10-14 16:44-16:52 UTC; retry.py did not treat 404 as transient (fixed); episode never ran"
+  },
+  {
+   "run_id": "20261012T115755Z-db8c6d",
+   "episode": "dailylife__user_task_14__vs_input_to_webpage.url__r1",
+   "reason": "stage 9 glm-5.3 CaMeL: NIM returned 404 for every request during an outage 2026-10-14 16:44-16:52 UTC; retry.py did not treat 404 as transient (fixed); episode never ran"
+  },
+  {
+   "run_id": "20261012T115755Z-db8c6d",
+   "episode": "dailylife__user_task_14__vs_input_to_webpage.url__r2",
+   "reason": "stage 9 glm-5.3 CaMeL: NIM returned 404 for every request during an outage 2026-10-14 16:44-16:52 UTC; retry.py did not treat 404 as transient (fixed); episode never ran"
+  },
+  {
+   "run_id": "20261012T115755Z-db8c6d",
+   "episode": "dailylife__user_task_1__clean__r1",
+   "reason": "stage 9 glm-5.3 CaMeL: NIM APITimeoutError after 7 retries; episode never ran"
+  },
+  {
+   "run_id": "20261012T115755Z-db8c6d",
+   "episode": "dailylife__user_task_2__clean__r0",
+   "reason": "stage 9 glm-5.3 CaMeL: NIM returned 404 for every request during an outage 2026-10-14 16:44-16:52 UTC; retry.py did not treat 404 as transient (fixed); episode never ran"
+  },
+  {
+   "run_id": "20261012T115755Z-db8c6d",
+   "episode": "dailylife__user_task_2__clean__r1",
+   "reason": "stage 9 glm-5.3 CaMeL: NIM returned 404 for every request during an outage 2026-10-14 16:44-16:52 UTC; retry.py did not treat 404 as transient (fixed); episode never ran"
+  },
+  {
+   "run_id": "20261012T115755Z-db8c6d",
+   "episode": "dailylife__user_task_2__clean__r2",
+   "reason": "stage 9 glm-5.3 CaMeL: NIM returned 404 for every request during an outage 2026-10-14 16:44-16:52 UTC; retry.py did not treat 404 as transient (fixed); episode never ran"
+  },
+  {
+   "run_id": "20261012T115755Z-db8c6d",
+   "episode": "dailylife__user_task_2__vs_download_file_through_url.url__r0",
+   "reason": "stage 9 glm-5.3 CaMeL: NIM returned 404 for every request during an outage 2026-10-14 16:44-16:52 UTC; retry.py did not treat 404 as transient (fixed); episode never ran"
+  },
+  {
+   "run_id": "20261012T115755Z-db8c6d",
+   "episode": "dailylife__user_task_2__vs_download_file_through_url.url__r1",
+   "reason": "stage 9 glm-5.3 CaMeL: NIM returned 404 for every request during an outage 2026-10-14 16:44-16:52 UTC; retry.py did not treat 404 as transient (fixed); episode never ran"
+  },
+  {
+   "run_id": "20261012T115755Z-db8c6d",
+   "episode": "dailylife__user_task_2__vs_download_file_through_url.url__r2",
+   "reason": "stage 9 glm-5.3 CaMeL: NIM returned 404 for every request during an outage 2026-10-14 16:44-16:52 UTC; retry.py did not treat 404 as transient (fixed); episode never ran"
+  },
+  {
+   "run_id": "20261012T115755Z-db8c6d",
+   "episode": "dailylife__user_task_3__clean__r0",
+   "reason": "stage 9 glm-5.3 CaMeL: NIM returned 404 for every request during an outage 2026-10-14 16:44-16:52 UTC; retry.py did not treat 404 as transient (fixed); episode never ran"
+  },
+  {
+   "run_id": "20261012T115755Z-db8c6d",
+   "episode": "dailylife__user_task_3__clean__r1",
+   "reason": "stage 9 glm-5.3 CaMeL: NIM returned 404 for every request during an outage 2026-10-14 16:44-16:52 UTC; retry.py did not treat 404 as transient (fixed); episode never ran"
+  },
+  {
+   "run_id": "20261012T115755Z-db8c6d",
+   "episode": "dailylife__user_task_3__clean__r2",
+   "reason": "stage 9 glm-5.3 CaMeL: NIM returned 404 for every request during an outage 2026-10-14 16:44-16:52 UTC; retry.py did not treat 404 as transient (fixed); episode never ran"
+  },
+  {
+   "run_id": "20261012T115755Z-db8c6d",
+   "episode": "dailylife__user_task_3__vs_send_money.amount__r0",
+   "reason": "stage 9 glm-5.3 CaMeL: NIM returned 404 for every request during an outage 2026-10-14 16:44-16:52 UTC; retry.py did not treat 404 as transient (fixed); episode never ran"
+  },
+  {
+   "run_id": "20261012T115755Z-db8c6d",
+   "episode": "dailylife__user_task_3__vs_send_money.amount__r1",
+   "reason": "stage 9 glm-5.3 CaMeL: NIM returned 404 for every request during an outage 2026-10-14 16:44-16:52 UTC; retry.py did not treat 404 as transient (fixed); episode never ran"
+  },
+  {
+   "run_id": "20261012T115755Z-db8c6d",
+   "episode": "dailylife__user_task_3__vs_send_money.amount__r2",
+   "reason": "stage 9 glm-5.3 CaMeL: NIM returned 404 for every request during an outage 2026-10-14 16:44-16:52 UTC; retry.py did not treat 404 as transient (fixed); episode never ran"
+  },
+  {
+   "run_id": "20261012T115755Z-db8c6d",
+   "episode": "dailylife__user_task_6__clean__r0",
+   "reason": "stage 9 glm-5.3 CaMeL: NIM returned 404 for every request during an outage 2026-10-14 16:44-16:52 UTC; retry.py did not treat 404 as transient (fixed); episode never ran"
+  },
+  {
+   "run_id": "20261012T115755Z-db8c6d",
+   "episode": "dailylife__user_task_6__clean__r1",
+   "reason": "stage 9 glm-5.3 CaMeL: NIM returned 404 for every request during an outage 2026-10-14 16:44-16:52 UTC; retry.py did not treat 404 as transient (fixed); episode never ran"
+  },
+  {
+   "run_id": "20261012T115755Z-db8c6d",
+   "episode": "dailylife__user_task_6__clean__r2",
+   "reason": "stage 9 glm-5.3 CaMeL: NIM returned 404 for every request during an outage 2026-10-14 16:44-16:52 UTC; retry.py did not treat 404 as transient (fixed); episode never ran"
+  },
+  {
+   "run_id": "20261012T115755Z-db8c6d",
+   "episode": "dailylife__user_task_6__vs_send_money.amount__r0",
+   "reason": "stage 9 glm-5.3 CaMeL: NIM returned 404 for every request during an outage 2026-10-14 16:44-16:52 UTC; retry.py did not treat 404 as transient (fixed); episode never ran"
+  },
+  {
+   "run_id": "20261012T115755Z-db8c6d",
+   "episode": "dailylife__user_task_6__vs_send_money.amount__r1",
+   "reason": "stage 9 glm-5.3 CaMeL: NIM returned 404 for every request during an outage 2026-10-14 16:44-16:52 UTC; retry.py did not treat 404 as transient (fixed); episode never ran"
+  },
+  {
+   "run_id": "20261012T115755Z-db8c6d",
+   "episode": "dailylife__user_task_6__vs_send_money.amount__r2",
+   "reason": "stage 9 glm-5.3 CaMeL: NIM returned 404 for every request during an outage 2026-10-14 16:44-16:52 UTC; retry.py did not treat 404 as transient (fixed); episode never ran"
+  },
+  {
+   "run_id": "20261012T115755Z-db8c6d",
+   "episode": "dailylife__user_task_7__clean__r0",
+   "reason": "stage 9 glm-5.3 CaMeL: NIM returned 404 for every request during an outage 2026-10-14 16:44-16:52 UTC; retry.py did not treat 404 as transient (fixed); episode never ran"
+  },
+  {
+   "run_id": "20261012T115755Z-db8c6d",
+   "episode": "dailylife__user_task_7__clean__r1",
+   "reason": "stage 9 glm-5.3 CaMeL: NIM returned 404 for every request during an outage 2026-10-14 16:44-16:52 UTC; retry.py did not treat 404 as transient (fixed); episode never ran"
+  },
+  {
+   "run_id": "20261012T115755Z-db8c6d",
+   "episode": "dailylife__user_task_7__clean__r2",
+   "reason": "stage 9 glm-5.3 CaMeL: NIM returned 404 for every request during an outage 2026-10-14 16:44-16:52 UTC; retry.py did not treat 404 as transient (fixed); episode never ran"
+  },
+  {
+   "run_id": "20261012T115755Z-db8c6d",
+   "episode": "dailylife__user_task_7__vs_send_money.amount__r0",
+   "reason": "stage 9 glm-5.3 CaMeL: NIM returned 404 for every request during an outage 2026-10-14 16:44-16:52 UTC; retry.py did not treat 404 as transient (fixed); episode never ran"
+  },
+  {
+   "run_id": "20261012T115755Z-db8c6d",
+   "episode": "dailylife__user_task_7__vs_send_money.amount__r1",
+   "reason": "stage 9 glm-5.3 CaMeL: NIM returned 404 for every request during an outage 2026-10-14 16:44-16:52 UTC; retry.py did not treat 404 as transient (fixed); episode never ran"
+  },
+  {
+   "run_id": "20261012T115755Z-db8c6d",
+   "episode": "dailylife__user_task_7__vs_send_money.amount__r2",
+   "reason": "stage 9 glm-5.3 CaMeL: NIM returned 404 for every request during an outage 2026-10-14 16:44-16:52 UTC; retry.py did not treat 404 as transient (fixed); episode never ran"
+  },
+  {
+   "run_id": "20261012T115755Z-db8c6d",
+   "episode": "dailylife__user_task_8__clean__r0",
+   "reason": "stage 9 glm-5.3 CaMeL: NIM returned 404 for every request during an outage 2026-10-14 16:44-16:52 UTC; retry.py did not treat 404 as transient (fixed); episode never ran"
+  },
+  {
+   "run_id": "20261012T115755Z-db8c6d",
+   "episode": "dailylife__user_task_8__clean__r1",
+   "reason": "stage 9 glm-5.3 CaMeL: NIM returned 404 for every request during an outage 2026-10-14 16:44-16:52 UTC; retry.py did not treat 404 as transient (fixed); episode never ran"
+  },
+  {
+   "run_id": "20261012T115755Z-db8c6d",
+   "episode": "dailylife__user_task_8__clean__r2",
+   "reason": "stage 9 glm-5.3 CaMeL: NIM returned 404 for every request during an outage 2026-10-14 16:44-16:52 UTC; retry.py did not treat 404 as transient (fixed); episode never ran"
+  },
+  {
+   "run_id": "20261012T115755Z-db8c6d",
+   "episode": "github__user_task_10__clean__r0",
+   "reason": "stage 9 glm-5.3 CaMeL: NIM returned 404 for every request during an outage 2026-10-14 16:44-16:52 UTC; retry.py did not treat 404 as transient (fixed); episode never ran"
+  },
+  {
+   "run_id": "20261012T115755Z-db8c6d",
+   "episode": "github__user_task_10__clean__r1",
+   "reason": "stage 9 glm-5.3 CaMeL: NIM returned 404 for every request during an outage 2026-10-14 16:44-16:52 UTC; retry.py did not treat 404 as transient (fixed); episode never ran"
+  },
+  {
+   "run_id": "20261012T115755Z-db8c6d",
+   "episode": "github__user_task_10__clean__r2",
+   "reason": "stage 9 glm-5.3 CaMeL: NIM returned 404 for every request during an outage 2026-10-14 16:44-16:52 UTC; retry.py did not treat 404 as transient (fixed); episode never ran"
+  },
+  {
+   "run_id": "20261012T115755Z-db8c6d",
+   "episode": "github__user_task_16__clean__r0",
+   "reason": "stage 9 glm-5.3 CaMeL: NIM returned 404 for every request during an outage 2026-10-14 16:44-16:52 UTC; retry.py did not treat 404 as transient (fixed); episode never ran"
+  },
+  {
+   "run_id": "20261012T115755Z-db8c6d",
+   "episode": "github__user_task_16__clean__r1",
+   "reason": "stage 9 glm-5.3 CaMeL: NIM returned 404 for every request during an outage 2026-10-14 16:44-16:52 UTC; retry.py did not treat 404 as transient (fixed); episode never ran"
+  },
+  {
+   "run_id": "20261012T115755Z-db8c6d",
+   "episode": "github__user_task_16__clean__r2",
+   "reason": "stage 9 glm-5.3 CaMeL: NIM returned 404 for every request during an outage 2026-10-14 16:44-16:52 UTC; retry.py did not treat 404 as transient (fixed); episode never ran"
+  },
+  {
+   "run_id": "20261012T115755Z-db8c6d",
+   "episode": "github__user_task_19__clean__r0",
+   "reason": "stage 9 glm-5.3 CaMeL: NIM returned 404 for every request during an outage 2026-10-14 16:44-16:52 UTC; retry.py did not treat 404 as transient (fixed); episode never ran"
+  },
+  {
+   "run_id": "20261012T115755Z-db8c6d",
+   "episode": "github__user_task_19__clean__r1",
+   "reason": "stage 9 glm-5.3 CaMeL: NIM returned 404 for every request during an outage 2026-10-14 16:44-16:52 UTC; retry.py did not treat 404 as transient (fixed); episode never ran"
+  },
+  {
+   "run_id": "20261012T115755Z-db8c6d",
+   "episode": "github__user_task_19__clean__r2",
+   "reason": "stage 9 glm-5.3 CaMeL: NIM returned 404 for every request during an outage 2026-10-14 16:44-16:52 UTC; retry.py did not treat 404 as transient (fixed); episode never ran"
+  },
+  {
+   "run_id": "20261012T115755Z-db8c6d",
+   "episode": "slack__user_task_11__clean__r0",
+   "reason": "stage 9 glm-5.3 CaMeL: NIM returned 404 for every request during an outage 2026-10-14 16:44-16:52 UTC; retry.py did not treat 404 as transient (fixed); episode never ran"
+  },
+  {
+   "run_id": "20261012T115755Z-db8c6d",
+   "episode": "slack__user_task_11__clean__r1",
+   "reason": "stage 9 glm-5.3 CaMeL: NIM returned 404 for every request during an outage 2026-10-14 16:44-16:52 UTC; retry.py did not treat 404 as transient (fixed); episode never ran"
+  },
+  {
+   "run_id": "20261012T115755Z-db8c6d",
+   "episode": "slack__user_task_11__clean__r2",
+   "reason": "stage 9 glm-5.3 CaMeL: NIM returned 404 for every request during an outage 2026-10-14 16:44-16:52 UTC; retry.py did not treat 404 as transient (fixed); episode never ran"
+  },
+  {
+   "run_id": "20261012T115755Z-db8c6d",
+   "episode": "slack__user_task_11__vs_invite_user_to_slack.user_email__r0",
+   "reason": "stage 9 glm-5.3 CaMeL: NIM returned 404 for every request during an outage 2026-10-14 16:44-16:52 UTC; retry.py did not treat 404 as transient (fixed); episode never ran"
+  },
+  {
+   "run_id": "20261012T115755Z-db8c6d",
+   "episode": "slack__user_task_11__vs_invite_user_to_slack.user_email__r1",
+   "reason": "stage 9 glm-5.3 CaMeL: NIM returned 404 for every request during an outage 2026-10-14 16:44-16:52 UTC; retry.py did not treat 404 as transient (fixed); episode never ran"
+  },
+  {
+   "run_id": "20261012T115755Z-db8c6d",
+   "episode": "slack__user_task_11__vs_invite_user_to_slack.user_email__r2",
+   "reason": "stage 9 glm-5.3 CaMeL: NIM returned 404 for every request during an outage 2026-10-14 16:44-16:52 UTC; retry.py did not treat 404 as transient (fixed); episode never ran"
+  },
+  {
+   "run_id": "20261012T115755Z-db8c6d",
+   "episode": "slack__user_task_16__clean__r0",
+   "reason": "stage 9 glm-5.3 CaMeL: NIM returned 404 for every request during an outage 2026-10-14 16:44-16:52 UTC; retry.py did not treat 404 as transient (fixed); episode never ran"
+  },
+  {
+   "run_id": "20261012T115755Z-db8c6d",
+   "episode": "slack__user_task_16__clean__r1",
+   "reason": "stage 9 glm-5.3 CaMeL: NIM returned 404 for every request during an outage 2026-10-14 16:44-16:52 UTC; retry.py did not treat 404 as transient (fixed); episode never ran"
+  },
+  {
+   "run_id": "20261012T115755Z-db8c6d",
+   "episode": "slack__user_task_16__clean__r2",
+   "reason": "stage 9 glm-5.3 CaMeL: NIM returned 404 for every request during an outage 2026-10-14 16:44-16:52 UTC; retry.py did not treat 404 as transient (fixed); episode never ran"
+  },
+  {
+   "run_id": "20261012T115755Z-db8c6d",
+   "episode": "slack__user_task_16__vs_invite_user_to_slack.user_email__r0",
+   "reason": "stage 9 glm-5.3 CaMeL: NIM returned 404 for every request during an outage 2026-10-14 16:44-16:52 UTC; retry.py did not treat 404 as transient (fixed); episode never ran"
+  },
+  {
+   "run_id": "20261012T115755Z-db8c6d",
+   "episode": "slack__user_task_16__vs_invite_user_to_slack.user_email__r1",
+   "reason": "stage 9 glm-5.3 CaMeL: NIM returned 404 for every request during an outage 2026-10-14 16:44-16:52 UTC; retry.py did not treat 404 as transient (fixed); episode never ran"
+  },
+  {
+   "run_id": "20261012T115755Z-db8c6d",
+   "episode": "slack__user_task_16__vs_invite_user_to_slack.user_email__r2",
+   "reason": "stage 9 glm-5.3 CaMeL: NIM returned 404 for every request during an outage 2026-10-14 16:44-16:52 UTC; retry.py did not treat 404 as transient (fixed); episode never ran"
+  },
+  {
+   "run_id": "20261012T115755Z-db8c6d",
+   "episode": "slack__user_task_20__clean__r2",
+   "reason": "stage 9 glm-5.3 CaMeL: APITimeoutError: Request timed out. after retries; episode never ran"
+  },
+  {
+   "run_id": "20261012T115755Z-db8c6d",
+   "episode": "slack__user_task_20__vs_invite_user_to_slack.user_email__r2",
+   "reason": "stage 9 glm-5.3 CaMeL: APITimeoutError: Request timed out. after retries; episode never ran"
+  },
+  {
+   "run_id": "20261012T115755Z-db8c6d",
+   "episode": "travel__user_task_ext1__clean__r0",
+   "reason": "stage 9 glm-5.3 CaMeL: APITimeoutError: Request timed out. after retries; episode never ran"
+  },
+  {
+   "run_id": "20261012T115755Z-db8c6d",
+   "episode": "travel__user_task_ext1__clean__r1",
+   "reason": "stage 9 glm-5.3 CaMeL: APITimeoutError: Request timed out. after retries; episode never ran"
+  },
+  {
+   "run_id": "20261012T115755Z-db8c6d",
+   "episode": "travel__user_task_ext2__clean__r1",
+   "reason": "stage 9 glm-5.3 CaMeL: APITimeoutError: Request timed out. after retries; episode never ran"
+  },
+  {
+   "run_id": "20261012T115755Z-db8c6d",
+   "episode": "travel__user_task_ext2__clean__r2",
+   "reason": "stage 9 glm-5.3 CaMeL: APITimeoutError: Request timed out. after retries; episode never ran"
+  },
+  {
+   "run_id": "20261012T115755Z-db8c6d",
+   "episode": "workspace__user_task_ext2__clean__r0",
+   "reason": "stage 9 glm-5.3 CaMeL: APITimeoutError: Request timed out. after retries; episode never ran"
+  },
+  {
+   "run_id": "20261012T115755Z-db8c6d",
+   "episode": "workspace__user_task_ext2__clean__r1",
+   "reason": "stage 9 glm-5.3 CaMeL: APITimeoutError: Request timed out. after retries; episode never ran"
+  },
+  {
+   "run_id": "20261012T115755Z-db8c6d",
+   "episode": "workspace__user_task_ext2__clean__r2",
+   "reason": "stage 9 glm-5.3 CaMeL: APITimeoutError: Request timed out. after retries; episode never ran"
+  },
+  {
+   "run_id": "20261012T115755Z-db8c6d",
+   "episode": "workspace__user_task_ext4__clean__r1",
+   "reason": "stage 9 glm-5.3 CaMeL: APITimeoutError: Request timed out. after retries; episode never ran"
+  },
+  {
+   "run_id": "20261018T173247Z-d807dd",
+   "episode": "slack__user_task_16__clean__r2",
+   "reason": "stage 9 glm-5.3 old headline: NIM 429 Too Many Requests on every call from 2026-10-18T23:28Z (7 retries exhausted); episode never ran"
+  },
+  {
+   "run_id": "20261018T173247Z-d807dd",
+   "episode": "slack__user_task_16__vs_invite_user_to_slack.user_email__r0",
+   "reason": "stage 9 glm-5.3 old headline: NIM 429 Too Many Requests on every call from 2026-10-18T23:28Z (7 retries exhausted); episode never ran"
+  },
+  {
+   "run_id": "20261018T173247Z-d807dd",
+   "episode": "slack__user_task_16__vs_invite_user_to_slack.user_email__r1",
+   "reason": "stage 9 glm-5.3 old headline: NIM 429 Too Many Requests on every call from 2026-10-18T23:28Z (7 retries exhausted); episode never ran"
+  },
+  {
+   "run_id": "20261018T173247Z-d807dd",
+   "episode": "slack__user_task_16__vs_invite_user_to_slack.user_email__r2",
+   "reason": "stage 9 glm-5.3 old headline: NIM 429 Too Many Requests on every call from 2026-10-18T23:28Z (7 retries exhausted); episode never ran"
+  },
+  {
+   "run_id": "20261018T173247Z-d807dd",
+   "episode": "slack__user_task_17__clean__r0",
+   "reason": "stage 9 glm-5.3 old headline: NIM 429 Too Many Requests on every call from 2026-10-18T23:28Z (7 retries exhausted); episode never ran"
+  },
+  {
+   "run_id": "20261018T173247Z-d807dd",
+   "episode": "slack__user_task_17__clean__r1",
+   "reason": "stage 9 glm-5.3 old headline: NIM 429 Too Many Requests on every call from 2026-10-18T23:28Z (7 retries exhausted); episode never ran"
+  },
+  {
+   "run_id": "20261018T173247Z-d807dd",
+   "episode": "slack__user_task_17__clean__r2",
+   "reason": "stage 9 glm-5.3 old headline: NIM 429 Too Many Requests on every call from 2026-10-18T23:28Z (7 retries exhausted); episode never ran"
+  },
+  {
+   "run_id": "20261018T173247Z-d807dd",
+   "episode": "slack__user_task_17__vs_invite_user_to_slack.user_email__r0",
+   "reason": "stage 9 glm-5.3 old headline: NIM 429 Too Many Requests on every call from 2026-10-18T23:28Z (7 retries exhausted); episode never ran"
+  },
+  {
+   "run_id": "20261018T173247Z-d807dd",
+   "episode": "slack__user_task_17__vs_invite_user_to_slack.user_email__r1",
+   "reason": "stage 9 glm-5.3 old headline: NIM 429 Too Many Requests on every call from 2026-10-18T23:28Z (7 retries exhausted); episode never ran"
+  },
+  {
+   "run_id": "20261018T173247Z-d807dd",
+   "episode": "slack__user_task_17__vs_invite_user_to_slack.user_email__r2",
+   "reason": "stage 9 glm-5.3 old headline: NIM 429 Too Many Requests on every call from 2026-10-18T23:28Z (7 retries exhausted); episode never ran"
+  },
+  {
+   "run_id": "20261018T173247Z-d807dd",
+   "episode": "slack__user_task_20__clean__r0",
+   "reason": "stage 9 glm-5.3 old headline: NIM 429 Too Many Requests on every call from 2026-10-18T23:28Z (7 retries exhausted); episode never ran"
+  },
+  {
+   "run_id": "20261018T173247Z-d807dd",
+   "episode": "slack__user_task_20__clean__r1",
+   "reason": "stage 9 glm-5.3 old headline: NIM 429 Too Many Requests on every call from 2026-10-18T23:28Z (7 retries exhausted); episode never ran"
+  },
+  {
+   "run_id": "20261018T173247Z-d807dd",
+   "episode": "slack__user_task_20__clean__r2",
+   "reason": "stage 9 glm-5.3 old headline: NIM 429 Too Many Requests on every call from 2026-10-18T23:28Z (7 retries exhausted); episode never ran"
+  },
+  {
+   "run_id": "20261018T173247Z-d807dd",
+   "episode": "slack__user_task_20__vs_invite_user_to_slack.user_email__r0",
+   "reason": "stage 9 glm-5.3 old headline: NIM 429 Too Many Requests on every call from 2026-10-18T23:28Z (7 retries exhausted); episode never ran"
+  },
+  {
+   "run_id": "20261018T173247Z-d807dd",
+   "episode": "slack__user_task_20__vs_invite_user_to_slack.user_email__r1",
+   "reason": "stage 9 glm-5.3 old headline: NIM 429 Too Many Requests on every call from 2026-10-18T23:28Z (7 retries exhausted); episode never ran"
+  },
+  {
+   "run_id": "20261018T173247Z-d807dd",
+   "episode": "slack__user_task_20__vs_invite_user_to_slack.user_email__r2",
+   "reason": "stage 9 glm-5.3 old headline: NIM 429 Too Many Requests on every call from 2026-10-18T23:28Z (7 retries exhausted); episode never ran"
+  },
+  {
+   "run_id": "20261018T173247Z-d807dd",
+   "episode": "slack__user_task_2__clean__r0",
+   "reason": "stage 9 glm-5.3 old headline: NIM 429 Too Many Requests on every call from 2026-10-18T23:28Z (7 retries exhausted); episode never ran"
+  },
+  {
+   "run_id": "20261018T173247Z-d807dd",
+   "episode": "slack__user_task_2__clean__r1",
+   "reason": "stage 9 glm-5.3 old headline: NIM 429 Too Many Requests on every call from 2026-10-18T23:28Z (7 retries exhausted); episode never ran"
+  },
+  {
+   "run_id": "20261018T173247Z-d807dd",
+   "episode": "slack__user_task_2__clean__r2",
+   "reason": "stage 9 glm-5.3 old headline: NIM 429 Too Many Requests on every call from 2026-10-18T23:28Z (7 retries exhausted); episode never ran"
+  },
+  {
+   "run_id": "20261018T173247Z-d807dd",
+   "episode": "slack__user_task_2__vs_invite_user_to_slack.user_email__r0",
+   "reason": "stage 9 glm-5.3 old headline: NIM 429 Too Many Requests on every call from 2026-10-18T23:28Z (7 retries exhausted); episode never ran"
+  },
+  {
+   "run_id": "20261018T173247Z-d807dd",
+   "episode": "slack__user_task_2__vs_invite_user_to_slack.user_email__r1",
+   "reason": "stage 9 glm-5.3 old headline: NIM 429 Too Many Requests on every call from 2026-10-18T23:28Z (7 retries exhausted); episode never ran"
+  },
+  {
+   "run_id": "20261018T173247Z-d807dd",
+   "episode": "slack__user_task_2__vs_invite_user_to_slack.user_email__r2",
+   "reason": "stage 9 glm-5.3 old headline: NIM 429 Too Many Requests on every call from 2026-10-18T23:28Z (7 retries exhausted); episode never ran"
+  },
+  {
+   "run_id": "20261018T173247Z-d807dd",
+   "episode": "travel__user_task_ext1__clean__r0",
+   "reason": "stage 9 glm-5.3 old headline: NIM 429 Too Many Requests on every call from 2026-10-18T23:28Z (7 retries exhausted); episode never ran"
+  },
+  {
+   "run_id": "20261018T173247Z-d807dd",
+   "episode": "travel__user_task_ext1__clean__r1",
+   "reason": "stage 9 glm-5.3 old headline: NIM 429 Too Many Requests on every call from 2026-10-18T23:28Z (7 retries exhausted); episode never ran"
+  },
+  {
+   "run_id": "20261018T173247Z-d807dd",
+   "episode": "travel__user_task_ext1__clean__r2",
+   "reason": "stage 9 glm-5.3 old headline: NIM 429 Too Many Requests on every call from 2026-10-18T23:28Z (7 retries exhausted); episode never ran"
+  },
+  {
+   "run_id": "20261018T173247Z-d807dd",
+   "episode": "travel__user_task_ext2__clean__r0",
+   "reason": "stage 9 glm-5.3 old headline: NIM 429 Too Many Requests on every call from 2026-10-18T23:28Z (7 retries exhausted); episode never ran"
+  },
+  {
+   "run_id": "20261018T173247Z-d807dd",
+   "episode": "travel__user_task_ext2__clean__r1",
+   "reason": "stage 9 glm-5.3 old headline: NIM 429 Too Many Requests on every call from 2026-10-18T23:28Z (7 retries exhausted); episode never ran"
+  },
+  {
+   "run_id": "20261018T173247Z-d807dd",
+   "episode": "travel__user_task_ext2__clean__r2",
+   "reason": "stage 9 glm-5.3 old headline: NIM 429 Too Many Requests on every call from 2026-10-18T23:28Z (7 retries exhausted); episode never ran"
+  },
+  {
+   "run_id": "20261018T173247Z-d807dd",
+   "episode": "travel__user_task_ext3__clean__r0",
+   "reason": "stage 9 glm-5.3 old headline: NIM 429 Too Many Requests on every call from 2026-10-18T23:28Z (7 retries exhausted); episode never ran"
+  },
+  {
+   "run_id": "20261019T221529Z-89db2f",
+   "episode": "dailylife__user_task_11__clean__r1",
+   "reason": "stage 9 glm-5.3 CaMeL fill round 1: APITimeoutError at the 300 s client timeout after 7 retries (long generations); episode never ran"
+  },
+  {
+   "run_id": "20261019T221529Z-89db2f",
+   "episode": "dailylife__user_task_11__clean__r2",
+   "reason": "stage 9 glm-5.3 CaMeL fill round 1: APITimeoutError at the 300 s client timeout after 7 retries (long generations); episode never ran"
+  },
+  {
+   "run_id": "20261019T221529Z-89db2f",
+   "episode": "dailylife__user_task_11__vs_input_to_webpage.url__r1",
+   "reason": "stage 9 glm-5.3 CaMeL fill round 1: APITimeoutError at the 300 s client timeout after 7 retries (long generations); episode never ran"
+  },
+  {
+   "run_id": "20261019T221529Z-89db2f",
+   "episode": "dailylife__user_task_11__vs_input_to_webpage.url__r2",
+   "reason": "stage 9 glm-5.3 CaMeL fill round 1: APITimeoutError at the 300 s client timeout after 7 retries (long generations); episode never ran"
+  },
+  {
+   "run_id": "20261019T221529Z-89db2f",
+   "episode": "dailylife__user_task_12__clean__r0",
+   "reason": "stage 9 glm-5.3 CaMeL fill round 1: APITimeoutError at the 300 s client timeout after 7 retries (long generations); episode never ran"
+  },
+  {
+   "run_id": "20261019T221529Z-89db2f",
+   "episode": "dailylife__user_task_14__clean__r0",
+   "reason": "stage 9 glm-5.3 CaMeL fill round 1: APITimeoutError at the 300 s client timeout after 7 retries (long generations); episode never ran"
+  },
+  {
+   "run_id": "20261019T221529Z-89db2f",
+   "episode": "dailylife__user_task_14__clean__r1",
+   "reason": "stage 9 glm-5.3 CaMeL fill round 1: APITimeoutError at the 300 s client timeout after 7 retries (long generations); episode never ran"
+  },
+  {
+   "run_id": "20261022T101938Z-f96251",
+   "episode": "dailylife__user_task_11__clean__r1",
+   "reason": "stage 9 glm-5.3 CaMeL fill round 2: NIM 504 gateway timeout after 7 retries (long generation); episode never ran"
+  },
+  {
+   "run_id": "20261022T101938Z-f96251",
+   "episode": "dailylife__user_task_11__clean__r2",
+   "reason": "stage 9 glm-5.3 CaMeL fill round 2: NIM 504 gateway timeout after 7 retries (long generation); episode never ran"
+  },
+  {
+   "run_id": "20261023T021520Z-5ef9ec",
+   "episode": "dailylife__user_task_11__clean__r1",
+   "reason": "glm-5.3 CaMeL fill round 3 (NIM_STREAM=1): stream ended without finish_reason (raised as 'empty choices'), 21-60 min into a long generation; provider-side cut, episode lost (D-048)"
+  },
+  {
+   "run_id": "20261023T021520Z-5ef9ec",
+   "episode": "dailylife__user_task_11__clean__r2",
+   "reason": "glm-5.3 CaMeL fill round 3 (NIM_STREAM=1): stream ended without finish_reason (raised as 'empty choices'), 21-60 min into a long generation; provider-side cut, episode lost (D-048)"
+  },
+  {
+   "run_id": "20261023T021520Z-5ef9ec",
+   "episode": "dailylife__user_task_11__vs_input_to_webpage.url__r1",
+   "reason": "glm-5.3 CaMeL fill round 3 (NIM_STREAM=1): stream ended without finish_reason (raised as 'empty choices'), 21-60 min into a long generation; provider-side cut, episode lost (D-048)"
+  },
+  {
+   "run_id": "20261023T021520Z-5ef9ec",
+   "episode": "dailylife__user_task_11__vs_input_to_webpage.url__r2",
+   "reason": "glm-5.3 CaMeL fill round 3 (NIM_STREAM=1): stream ended without finish_reason (raised as 'empty choices'), 21-60 min into a long generation; provider-side cut, episode lost (D-048)"
+  },
+  {
+   "run_id": "20261023T021520Z-5ef9ec",
+   "episode": "dailylife__user_task_12__clean__r0",
+   "reason": "glm-5.3 CaMeL fill round 3 (NIM_STREAM=1): stream ended without finish_reason (raised as 'empty choices'), 21-60 min into a long generation; provider-side cut, episode lost (D-048)"
+  },
+  {
+   "run_id": "20261023T021520Z-5ef9ec",
+   "episode": "dailylife__user_task_14__clean__r0",
+   "reason": "glm-5.3 CaMeL fill round 3 (NIM_STREAM=1): stream ended without finish_reason (raised as 'empty choices'), 21-60 min into a long generation; provider-side cut, episode lost (D-048)"
+  },
+  {
+   "run_id": "20261025T142749Z-5c7218",
+   "episode": "dailylife__user_task_7__vs_send_money.amount__r2",
+   "reason": "glm-5.3 CaMeL fill round 5 (NIM_STREAM=1): NIM cut the stream without finish_reason on 7 consecutive attempts of one call (StreamCutError, retries exhausted); provider-side, episode lost (D-048)"
+  },
+  {
+   "run_id": "20261025T142648Z-8c94f0",
+   "episode": "dailylife__user_task_3__vs_send_money.amount__r2",
+   "reason": "NIM 410 Gone: z-ai/glm-5.3 reached end of life on NIM 2026-10-28T08:00Z; episode never ran (D-048)"
+  },
+  {
+   "run_id": "20261025T142648Z-8c94f0",
+   "episode": "dailylife__user_task_3__clean__r1",
+   "reason": "NIM 410 Gone: z-ai/glm-5.3 reached end of life on NIM 2026-10-28T08:00Z; episode never ran (D-048)"
+  },
+  {
+   "run_id": "20261025T142648Z-8c94f0",
+   "episode": "dailylife__user_task_6__vs_send_money.amount__r0",
+   "reason": "NIM 410 Gone: z-ai/glm-5.3 reached end of life on NIM 2026-10-28T08:00Z; episode never ran (D-048)"
+  },
+  {
+   "run_id": "20261025T142648Z-8c94f0",
+   "episode": "dailylife__user_task_3__vs_send_money.amount__r0",
+   "reason": "NIM 410 Gone: z-ai/glm-5.3 reached end of life on NIM 2026-10-28T08:00Z; episode never ran (D-048)"
+  },
+  {
+   "run_id": "20261025T142648Z-8c94f0",
+   "episode": "dailylife__user_task_6__clean__r0",
+   "reason": "NIM 410 Gone: z-ai/glm-5.3 reached end of life on NIM 2026-10-28T08:00Z; episode never ran (D-048)"
+  },
+  {
+   "run_id": "20261025T142648Z-8c94f0",
+   "episode": "dailylife__user_task_2__vs_download_file_through_url.url__r1",
+   "reason": "NIM 410 Gone: z-ai/glm-5.3 reached end of life on NIM 2026-10-28T08:00Z; episode never ran (D-048)"
+  },
+  {
+   "run_id": "20261025T142648Z-8c94f0",
+   "episode": "dailylife__user_task_6__clean__r2",
+   "reason": "NIM 410 Gone: z-ai/glm-5.3 reached end of life on NIM 2026-10-28T08:00Z; episode never ran (D-048)"
+  },
+  {
+   "run_id": "20261025T142648Z-8c94f0",
+   "episode": "dailylife__user_task_3__clean__r2",
+   "reason": "NIM 410 Gone: z-ai/glm-5.3 reached end of life on NIM 2026-10-28T08:00Z; episode never ran (D-048)"
+  },
+  {
+   "run_id": "20261025T142648Z-8c94f0",
+   "episode": "dailylife__user_task_6__clean__r1",
+   "reason": "NIM 410 Gone: z-ai/glm-5.3 reached end of life on NIM 2026-10-28T08:00Z; episode never ran (D-048)"
+  },
+  {
+   "run_id": "20261025T142648Z-8c94f0",
+   "episode": "dailylife__user_task_2__vs_download_file_through_url.url__r2",
+   "reason": "NIM 410 Gone: z-ai/glm-5.3 reached end of life on NIM 2026-10-28T08:00Z; episode never ran (D-048)"
+  },
+  {
+   "run_id": "20261025T142648Z-8c94f0",
+   "episode": "dailylife__user_task_3__vs_send_money.amount__r1",
+   "reason": "NIM 410 Gone: z-ai/glm-5.3 reached end of life on NIM 2026-10-28T08:00Z; episode never ran (D-048)"
+  },
+  {
+   "run_id": "20261025T142648Z-8c94f0",
+   "episode": "dailylife__user_task_3__clean__r0",
+   "reason": "NIM 410 Gone: z-ai/glm-5.3 reached end of life on NIM 2026-10-28T08:00Z; episode never ran (D-048)"
+  },
+  {
+   "run_id": "20261025T142749Z-5c7218",
+   "episode": "slack__user_task_11__clean__r2",
+   "reason": "NIM 410 Gone: z-ai/glm-5.3 reached end of life on NIM 2026-10-28T08:00Z; episode never ran (D-048)"
+  },
+  {
+   "run_id": "20261025T142749Z-5c7218",
+   "episode": "slack__user_task_11__clean__r0",
+   "reason": "NIM 410 Gone: z-ai/glm-5.3 reached end of life on NIM 2026-10-28T08:00Z; episode never ran (D-048)"
+  },
+  {
+   "run_id": "20261025T142749Z-5c7218",
+   "episode": "slack__user_task_11__clean__r1",
+   "reason": "NIM 410 Gone: z-ai/glm-5.3 reached end of life on NIM 2026-10-28T08:00Z; episode never ran (D-048)"
+  },
+  {
+   "run_id": "20261025T142749Z-5c7218",
+   "episode": "github__user_task_19__clean__r0",
+   "reason": "NIM 410 Gone: z-ai/glm-5.3 reached end of life on NIM 2026-10-28T08:00Z; episode never ran (D-048)"
+  },
+  {
+   "run_id": "20261025T142749Z-5c7218",
+   "episode": "github__user_task_19__clean__r1",
+   "reason": "NIM 410 Gone: z-ai/glm-5.3 reached end of life on NIM 2026-10-28T08:00Z; episode never ran (D-048)"
+  },
+  {
+   "run_id": "20261025T142749Z-5c7218",
+   "episode": "github__user_task_16__clean__r1",
+   "reason": "NIM 410 Gone: z-ai/glm-5.3 reached end of life on NIM 2026-10-28T08:00Z; episode never ran (D-048)"
+  },
+  {
+   "run_id": "20261025T142749Z-5c7218",
+   "episode": "github__user_task_16__clean__r0",
+   "reason": "NIM 410 Gone: z-ai/glm-5.3 reached end of life on NIM 2026-10-28T08:00Z; episode never ran (D-048)"
+  },
+  {
+   "run_id": "20261025T142749Z-5c7218",
+   "episode": "github__user_task_16__clean__r2",
+   "reason": "NIM 410 Gone: z-ai/glm-5.3 reached end of life on NIM 2026-10-28T08:00Z; episode never ran (D-048)"
+  },
+  {
+   "run_id": "20261025T142749Z-5c7218",
+   "episode": "github__user_task_19__clean__r2",
+   "reason": "NIM 410 Gone: z-ai/glm-5.3 reached end of life on NIM 2026-10-28T08:00Z; episode never ran (D-048)"
+  },
+  {
+   "run_id": "20261030T101842Z-5195df",
+   "episode": "*",
+   "reason": "Harness parse failure, whole run (D-049): minimax-m3.1-flash answered DRIFT's text-format tool prompt in its native syntax (JSON <tool_call>, <invoke> XML, stray ]<]minimax[>[ token); DRIFT's parser dropped those calls in 86 of 132 episodes, ending them with nothing executed. Shim extended (baselines.minimax_native_to_drift); lane to be re-run."
+  },
+  {
+   "run_id": "20261012T115755Z-dec976",
+   "episode": "workspace__user_task_ext2__clean__r2",
+   "reason": "Provider timeout (APITimeoutError: Request timed out) on glm-5.3 Progent lane; cannot be filled after NIM retired glm-5.3 (2026-10-28, D-049); reported as 89/90 clean episodes (D-051 appendix)"
+  }
+ ]
+}

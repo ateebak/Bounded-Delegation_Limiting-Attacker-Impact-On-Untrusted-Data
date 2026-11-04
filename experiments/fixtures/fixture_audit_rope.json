@@ -1,0 +1,571 @@
+{
+ "agentdyn_dir": "external/ROPE/autodojo/src/agentdojo",
+ "findings": [
+  {
+   "suite": "banking",
+   "kind": "currency",
+   "value": "Total\\\\t\\\\t\\\\t98.70",
+   "issue": "amount_without_currency",
+   "role": "legitimate",
+   "files": [
+    "data/suites/banking/injection_vectors.yaml"
+   ]
+  },
+  {
+   "suite": "banking",
+   "kind": "currency",
+   "value": "total bill was 12.00",
+   "issue": "amount_without_currency",
+   "role": "legitimate",
+   "files": [
+    "default_suites/v1/banking_v2_1/user_tasks.py"
+   ]
+  },
+  {
+   "suite": "banking",
+   "kind": "currency",
+   "value": "total came to 12.00",
+   "issue": "amount_without_currency",
+   "role": "legitimate",
+   "files": [
+    "default_suites/v1/banking_v2_3/user_tasks.py"
+   ]
+  },
+  {
+   "suite": "banking",
+   "kind": "iban",
+   "value": "CA133012400231215421872",
+   "issue": "iban_country_has_no_iban",
+   "role": "legitimate",
+   "files": [
+    "default_suites/v1/banking_v2_0/user_tasks.py",
+    "default_suites/v1/banking_v2_1/user_tasks.py",
+    "default_suites/v1/banking_v2_2/user_tasks.py",
+    "default_suites/v1/banking_v2_3/user_tasks.py",
+    "default_suites/v1/banking_v2_4/user_tasks.py",
+    "default_suites/v1_1_1/banking/user_tasks.py"
+   ]
+  },
+  {
+   "suite": "banking",
+   "kind": "iban",
+   "value": "UK12345678901234567890",
+   "issue": "iban_country_code_not_iso",
+   "role": "legitimate",
+   "files": [
+    "data/suites/banking/injection_vectors.yaml",
+    "default_suites/v1/banking/user_tasks.py"
+   ]
+  },
+  {
+   "suite": "banking",
+   "kind": "iban",
+   "value": "US122000000121212121212",
+   "issue": "iban_country_has_no_iban",
+   "role": "legitimate",
+   "files": [
+    "data/suites/banking/environment.yaml",
+    "default_suites/v1/banking/user_tasks.py",
+    "default_suites/v1/banking_v2_0/user_tasks.py",
+    "default_suites/v1/banking_v2_1/user_tasks.py",
+    "default_suites/v1/banking_v2_2/user_tasks.py",
+    "default_suites/v1/banking_v2_3/user_tasks.py",
+    "default_suites/v1/banking_v2_4/user_tasks.py",
+    "default_suites/v1_2_2/banking/user_tasks.py"
+   ]
+  },
+  {
+   "suite": "banking",
+   "kind": "iban",
+   "value": "US133000000121212121212",
+   "issue": "iban_country_has_no_iban",
+   "role": "both",
+   "files": [
+    "default_suites/v1/banking/injection_tasks.py",
+    "default_suites/v1/banking/user_tasks.py",
+    "default_suites/v1/banking_v2_0/injection_tasks.py",
+    "default_suites/v1/banking_v2_1/injection_tasks.py",
+    "default_suites/v1/banking_v2_2/injection_tasks.py",
+    "default_suites/v1/banking_v2_3/injection_tasks.py",
+    "default_suites/v1/banking_v2_4/injection_tasks.py",
+    "default_suites/v1_2/banking/injection_tasks.py"
+   ]
+  },
+  {
+   "suite": "dailylife",
+   "kind": "email",
+   "value": "1W@Fd",
+   "issue": "email_no_tld",
+   "role": "legitimate",
+   "files": [
+    "data/suites/dailylife/include/web_database.yaml",
+    "default_suites/v1/dailylife/user_tasks.py"
+   ]
+  },
+  {
+   "suite": "dailylife",
+   "kind": "email",
+   "value": "support@resume_templates.com",
+   "issue": "email_domain_underscore",
+   "role": "legitimate",
+   "files": [
+    "data/suites/dailylife/include/web_database.yaml"
+   ]
+  },
+  {
+   "suite": "dailylife",
+   "kind": "iban",
+   "value": "AC2859610395",
+   "issue": "iban_unknown_country",
+   "role": "legitimate",
+   "files": [
+    "data/suites/dailylife/include/web_database.yaml",
+    "default_suites/v1/dailylife/user_tasks.py"
+   ]
+  },
+  {
+   "suite": "dailylife",
+   "kind": "iban",
+   "value": "AT6854532054",
+   "issue": "iban_length",
+   "role": "both",
+   "files": [
+    "data/suites/dailylife/include/bank_database.yaml",
+    "default_suites/v1/dailylife/injection_tasks.py"
+   ]
+  },
+  {
+   "suite": "dailylife",
+   "kind": "iban",
+   "value": "CF8932140215",
+   "issue": "iban_length",
+   "role": "legitimate",
+   "files": [
+    "data/suites/dailylife/include/bank_database.yaml",
+    "data/suites/dailylife/include/web_database.yaml",
+    "default_suites/v1/dailylife/user_tasks.py"
+   ]
+  },
+  {
+   "suite": "dailylife",
+   "kind": "iban",
+   "value": "CH5068490582",
+   "issue": "iban_length",
+   "role": "legitimate",
+   "files": [
+    "data/suites/dailylife/include/bank_database.yaml",
+    "data/suites/dailylife/include/filesystem.yaml",
+    "data/suites/dailylife/include/shopping_platform.yaml"
+   ]
+  },
+  {
+   "suite": "dailylife",
+   "kind": "iban",
+   "value": "CH9300762011",
+   "issue": "iban_length",
+   "role": "legitimate",
+   "files": [
+    "data/suites/dailylife/include/bank_database.yaml"
+   ]
+  },
+  {
+   "suite": "dailylife",
+   "kind": "iban",
+   "value": "CS5430532478",
+   "issue": "iban_unknown_country",
+   "role": "legitimate",
+   "files": [
+    "data/suites/dailylife/include/bank_database.yaml",
+    "data/suites/dailylife/include/web_database.yaml",
+    "default_suites/v1/dailylife/user_tasks.py"
+   ]
+  },
+  {
+   "suite": "dailylife",
+   "kind": "iban",
+   "value": "DE8937040044",
+   "issue": "iban_length",
+   "role": "legitimate",
+   "files": [
+    "data/suites/dailylife/include/bank_database.yaml",
+    "data/suites/dailylife/include/filesystem.yaml",
+    "data/suites/dailylife/include/shopping_platform.yaml",
+    "default_suites/v1/dailylife/user_tasks.py"
+   ]
+  },
+  {
+   "suite": "dailylife",
+   "kind": "iban",
+   "value": "DH5939281092",
+   "issue": "iban_unknown_country",
+   "role": "legitimate",
+   "files": [
+    "data/suites/dailylife/include/bank_database.yaml",
+    "data/suites/dailylife/include/web_database.yaml",
+    "default_suites/v1/dailylife/user_tasks.py"
+   ]
+  },
+  {
+   "suite": "dailylife",
+   "kind": "iban",
+   "value": "SE3550000549",
+   "issue": "iban_length",
+   "role": "legitimate",
+   "files": [
+    "data/suites/dailylife/include/bank_database.yaml"
+   ]
+  },
+  {
+   "suite": "dailylife",
+   "kind": "iban",
+   "value": "SE5902959058",
+   "issue": "iban_length",
+   "role": "both",
+   "files": [
+    "data/suites/dailylife/include/bank_database.yaml",
+    "data/suites/dailylife/include/filesystem.yaml",
+    "data/suites/dailylife/include/shopping_platform.yaml",
+    "data/suites/dailylife/include/web_database.yaml",
+    "default_suites/v1/dailylife/injection_tasks.py",
+    "default_suites/v1/dailylife/user_tasks.py"
+   ]
+  },
+  {
+   "suite": "dailylife",
+   "kind": "url",
+   "value": "www.cs_conference.com",
+   "issue": "hostname_underscore_invalid_dns",
+   "role": "legitimate",
+   "files": [
+    "data/suites/dailylife/include/web_database.yaml",
+    "default_suites/v1/dailylife/user_tasks.py"
+   ]
+  },
+  {
+   "suite": "dailylife",
+   "kind": "url",
+   "value": "www.cs_property.com",
+   "issue": "hostname_underscore_invalid_dns",
+   "role": "legitimate",
+   "files": [
+    "data/suites/dailylife/include/web_database.yaml",
+    "default_suites/v1/dailylife/user_tasks.py"
+   ]
+  },
+  {
+   "suite": "dailylife",
+   "kind": "url",
+   "value": "www.my_company.com",
+   "issue": "hostname_underscore_invalid_dns",
+   "role": "both",
+   "files": [
+    "data/suites/dailylife/include/web_database.yaml",
+    "default_suites/v1/dailylife/injection_tasks.py"
+   ]
+  },
+  {
+   "suite": "dailylife",
+   "kind": "url",
+   "value": "www.resume_templates.com",
+   "issue": "hostname_underscore_invalid_dns",
+   "role": "legitimate",
+   "files": [
+    "data/suites/dailylife/include/email_database.yaml",
+    "data/suites/dailylife/include/web_database.yaml",
+    "default_suites/v1/dailylife/user_tasks.py"
+   ]
+  },
+  {
+   "suite": "github",
+   "kind": "email",
+   "value": "support@resume_templates.com",
+   "issue": "email_domain_underscore",
+   "role": "legitimate",
+   "files": [
+    "data/suites/github/include/web_database.yaml"
+   ]
+  },
+  {
+   "suite": "github",
+   "kind": "iban",
+   "value": "CH5068490582",
+   "issue": "iban_length",
+   "role": "legitimate",
+   "files": [
+    "data/suites/github/include/bank_database.yaml",
+    "data/suites/github/include/filesystem.yaml",
+    "data/suites/github/include/shopping_platform.yaml"
+   ]
+  },
+  {
+   "suite": "github",
+   "kind": "iban",
+   "value": "CH9300762011",
+   "issue": "iban_length",
+   "role": "legitimate",
+   "files": [
+    "data/suites/github/include/bank_database.yaml"
+   ]
+  },
+  {
+   "suite": "github",
+   "kind": "iban",
+   "value": "DE8937040044",
+   "issue": "iban_length",
+   "role": "legitimate",
+   "files": [
+    "data/suites/github/include/bank_database.yaml",
+    "data/suites/github/include/filesystem.yaml",
+    "data/suites/github/include/shopping_platform.yaml"
+   ]
+  },
+  {
+   "suite": "github",
+   "kind": "iban",
+   "value": "DH5939281092",
+   "issue": "iban_unknown_country",
+   "role": "legitimate",
+   "files": [
+    "data/suites/github/include/bank_database.yaml",
+    "data/suites/github/include/web_database.yaml"
+   ]
+  },
+  {
+   "suite": "github",
+   "kind": "iban",
+   "value": "EH9025920092",
+   "issue": "iban_unknown_country",
+   "role": "legitimate",
+   "files": [
+    "data/suites/github/include/bank_database.yaml",
+    "data/suites/github/include/web_database.yaml"
+   ]
+  },
+  {
+   "suite": "github",
+   "kind": "iban",
+   "value": "SE3550000549",
+   "issue": "iban_length",
+   "role": "legitimate",
+   "files": [
+    "data/suites/github/include/bank_database.yaml"
+   ]
+  },
+  {
+   "suite": "github",
+   "kind": "iban",
+   "value": "SE5902959058",
+   "issue": "iban_length",
+   "role": "legitimate",
+   "files": [
+    "data/suites/github/include/bank_database.yaml",
+    "data/suites/github/include/filesystem.yaml",
+    "data/suites/github/include/shopping_platform.yaml"
+   ]
+  },
+  {
+   "suite": "github",
+   "kind": "url",
+   "value": "www.best_discount.com",
+   "issue": "hostname_underscore_invalid_dns",
+   "role": "legitimate",
+   "files": [
+    "data/suites/github/include/web_database.yaml"
+   ]
+  },
+  {
+   "suite": "github",
+   "kind": "url",
+   "value": "www.github_receive_invitation.com",
+   "issue": "hostname_underscore_invalid_dns",
+   "role": "legitimate",
+   "files": [
+    "data/suites/github/include/email_database.yaml",
+    "data/suites/github/include/web_database.yaml",
+    "default_suites/v1/github/user_tasks.py"
+   ]
+  },
+  {
+   "suite": "github",
+   "kind": "url",
+   "value": "www.hi_discount.com",
+   "issue": "hostname_underscore_invalid_dns",
+   "role": "legitimate",
+   "files": [
+    "data/suites/github/include/web_database.yaml"
+   ]
+  },
+  {
+   "suite": "github",
+   "kind": "url",
+   "value": "www.resume_templates.com",
+   "issue": "hostname_underscore_invalid_dns",
+   "role": "legitimate",
+   "files": [
+    "data/suites/github/include/email_database.yaml",
+    "data/suites/github/include/web_database.yaml"
+   ]
+  },
+  {
+   "suite": "shopping",
+   "kind": "email",
+   "value": "support@resume_templates.com",
+   "issue": "email_domain_underscore",
+   "role": "legitimate",
+   "files": [
+    "data/suites/shopping/include/web_database.yaml"
+   ]
+  },
+  {
+   "suite": "shopping",
+   "kind": "iban",
+   "value": "CH5068490582",
+   "issue": "iban_length",
+   "role": "legitimate",
+   "files": [
+    "data/suites/shopping/include/bank_database.yaml",
+    "data/suites/shopping/include/filesystem.yaml",
+    "data/suites/shopping/include/shopping_platform.yaml"
+   ]
+  },
+  {
+   "suite": "shopping",
+   "kind": "iban",
+   "value": "CH9300762011",
+   "issue": "iban_length",
+   "role": "legitimate",
+   "files": [
+    "data/suites/shopping/include/bank_database.yaml"
+   ]
+  },
+  {
+   "suite": "shopping",
+   "kind": "iban",
+   "value": "DE8937040044",
+   "issue": "iban_length",
+   "role": "legitimate",
+   "files": [
+    "data/suites/shopping/include/bank_database.yaml",
+    "data/suites/shopping/include/filesystem.yaml",
+    "data/suites/shopping/include/shopping_platform.yaml",
+    "default_suites/v1/shopping/user_tasks.py"
+   ]
+  },
+  {
+   "suite": "shopping",
+   "kind": "iban",
+   "value": "DH5939281092",
+   "issue": "iban_unknown_country",
+   "role": "legitimate",
+   "files": [
+    "data/suites/shopping/include/bank_database.yaml",
+    "data/suites/shopping/include/web_database.yaml"
+   ]
+  },
+  {
+   "suite": "shopping",
+   "kind": "iban",
+   "value": "EH9025920092",
+   "issue": "iban_unknown_country",
+   "role": "both",
+   "files": [
+    "data/suites/shopping/include/bank_database.yaml",
+    "data/suites/shopping/include/web_database.yaml",
+    "default_suites/v1/shopping/injection_tasks.py"
+   ]
+  },
+  {
+   "suite": "shopping",
+   "kind": "iban",
+   "value": "SE3550000549",
+   "issue": "iban_length",
+   "role": "legitimate",
+   "files": [
+    "data/suites/shopping/include/bank_database.yaml"
+   ]
+  },
+  {
+   "suite": "shopping",
+   "kind": "iban",
+   "value": "SE5902959058",
+   "issue": "iban_length",
+   "role": "legitimate",
+   "files": [
+    "data/suites/shopping/include/bank_database.yaml",
+    "data/suites/shopping/include/filesystem.yaml",
+    "data/suites/shopping/include/shopping_platform.yaml"
+   ]
+  },
+  {
+   "suite": "shopping",
+   "kind": "iban",
+   "value": "UK12345678901234567890",
+   "issue": "iban_country_code_not_iso",
+   "role": "legitimate",
+   "files": [
+    "default_suites/v1/shopping/user_tasks.py"
+   ]
+  },
+  {
+   "suite": "shopping",
+   "kind": "url",
+   "value": "www.best_discount.com",
+   "issue": "hostname_underscore_invalid_dns",
+   "role": "both",
+   "files": [
+    "data/suites/shopping/include/web_database.yaml",
+    "default_suites/v1/shopping/injection_tasks.py"
+   ]
+  },
+  {
+   "suite": "shopping",
+   "kind": "url",
+   "value": "www.github_receive_invitation.com",
+   "issue": "hostname_underscore_invalid_dns",
+   "role": "legitimate",
+   "files": [
+    "data/suites/shopping/include/web_database.yaml"
+   ]
+  },
+  {
+   "suite": "shopping",
+   "kind": "url",
+   "value": "www.hi_discount.com",
+   "issue": "hostname_underscore_invalid_dns",
+   "role": "legitimate",
+   "files": [
+    "data/suites/shopping/include/web_database.yaml"
+   ]
+  },
+  {
+   "suite": "shopping",
+   "kind": "url",
+   "value": "www.resume_templates.com",
+   "issue": "hostname_underscore_invalid_dns",
+   "role": "legitimate",
+   "files": [
+    "data/suites/shopping/include/email_database.yaml",
+    "data/suites/shopping/include/web_database.yaml"
+   ]
+  }
+ ],
+ "summary": {
+  "banking/currency/amount_without_currency": 3,
+  "banking/iban/iban_country_code_not_iso": 1,
+  "banking/iban/iban_country_has_no_iban": 3,
+  "dailylife/email/email_domain_underscore": 1,
+  "dailylife/email/email_no_tld": 1,
+  "dailylife/iban/iban_length": 7,
+  "dailylife/iban/iban_unknown_country": 3,
+  "dailylife/url/hostname_underscore_invalid_dns": 4,
+  "github/email/email_domain_underscore": 1,
+  "github/iban/iban_length": 5,
+  "github/iban/iban_unknown_country": 2,
+  "github/url/hostname_underscore_invalid_dns": 4,
+  "shopping/email/email_domain_underscore": 1,
+  "shopping/iban/iban_country_code_not_iso": 1,
+  "shopping/iban/iban_length": 5,
+  "shopping/iban/iban_unknown_country": 2,
+  "shopping/url/hostname_underscore_invalid_dns": 4
+ }
+}

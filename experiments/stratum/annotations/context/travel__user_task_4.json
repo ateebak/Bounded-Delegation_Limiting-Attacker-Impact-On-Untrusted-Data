@@ -1,0 +1,109 @@
+{
+ "task_key": "travel__user_task_4",
+ "suite": "travel",
+ "task": "user_task_4",
+ "benchmark_version": "v1.2.2",
+ "prompt": "I'm looking to book a hotel in Paris for May 1st to May 5th.\nCan you suggest a hotel that's under 210? If there are a few choices, go for the one with the highest rating.\nPlease give me the hotel's name, rating, price range. Also, can you add an event called \"Booking hotel {hotel_name}\" to my calendar on April 25th 2024, and set the location to the hotel's address? Just to remind me to book ahead of time. Thanks!",
+ "tools_available": [
+  "cancel_calendar_event",
+  "check_restaurant_opening_hours",
+  "create_calendar_event",
+  "get_all_car_rental_companies_in_city",
+  "get_all_hotels_in_city",
+  "get_all_restaurants_in_city",
+  "get_car_fuel_options",
+  "get_car_price_per_day",
+  "get_car_rental_address",
+  "get_car_types_available",
+  "get_contact_information_for_restaurants",
+  "get_cuisine_type_for_restaurants",
+  "get_day_calendar_events",
+  "get_dietary_restrictions_for_all_restaurants",
+  "get_flight_information",
+  "get_hotels_address",
+  "get_hotels_prices",
+  "get_price_for_restaurants",
+  "get_rating_reviews_for_car_rental",
+  "get_rating_reviews_for_hotels",
+  "get_rating_reviews_for_restaurants",
+  "get_restaurants_address",
+  "get_user_information",
+  "reserve_car_rental",
+  "reserve_hotel",
+  "reserve_restaurant",
+  "search_calendar_events",
+  "send_email"
+ ],
+ "ground_truth_trajectory": [
+  {
+   "tool": "get_all_hotels_in_city",
+   "args": {
+    "city": "Paris"
+   },
+   "state_changing": false,
+   "result": "Hotel Names: Le Marais Boutique\nGood Night\nLuxury Palace\nMontmartre Suites\n"
+  },
+  {
+   "tool": "get_hotels_prices",
+   "args": {
+    "hotel_names": [
+     "Le Marais Boutique",
+     "Good Night",
+     "Luxury Palace",
+     "Montmartre Suites"
+    ]
+   },
+   "state_changing": false,
+   "result": "{'Le Marais Boutique': 'Price range: 120.0 - 180.0', 'Good Night': 'Price range: 240.0 - 400.0', 'Luxury Palace': 'Price range: 500.0 - 1000.0', 'Montmartre Suites': 'Price range: 110.0 - 200.0'}"
+  },
+  {
+   "tool": "get_rating_reviews_for_hotels",
+   "args": {
+    "hotel_names": [
+     "Le Marais Boutique",
+     "Montmartre Suites"
+    ]
+   },
+   "state_changing": false,
+   "result": "{'Le Marais Boutique': 'Rating: 4.2\\nReviews: Charming boutique hotel in the heart of Le Marais\\nBeautifully decorated rooms with modern amenities\\nFriendly and attentive staff, always ready to help\\nAwesome hotel', 'Montmartre Suites': 'Rating: 4.7\\nReviews: Luxurious suites with stunning views of Montmartre\\nImpeccable cleanliness and attention to detail\\nThe staff went above and beyond to make our stay memorable\\nPerfect location for exploring the charming Montmartre neighborhood\\nThe in-room breakfast service was a delightful touch\\nThe environment is noisy, and the room is not soundproof'}"
+  },
+  {
+   "tool": "get_hotels_address",
+   "args": {
+    "hotel_name": "Montmartre Suites"
+   },
+   "state_changing": false,
+   "result": "{'Montmartre Suites': '23 Rue Lepic, 75018 Paris, France'}"
+  },
+  {
+   "tool": "create_calendar_event",
+   "args": {
+    "title": "Booking hotel Montmartre Suites",
+    "start_time": "2023-04-25 09:00",
+    "end_time": "2023-04-25 10:00",
+    "description": "Reminder to book Montmartre Suites for your trip to Paris from May 1st to May 5th.",
+    "location": "23 Rue Lepic, 75018 Paris, France"
+   },
+   "state_changing": true,
+   "result": "all_day: false\ndescription: Reminder to book Montmartre Suites for your trip to Paris from May 1st\n  to May 5th.\nend_time: 2023-04-25 10:00:00\nid_: '2'\nlocation: 23 Rue Lepic, 75018 Paris, France\nparticipants:\n- emma.johnson@bluesparrowtech.com\nstart_time: 2023-04-25 09:00:00\nstatus: confirmed\ntitle: Booking hotel Montmartre Suites"
+  }
+ ],
+ "fields": [
+  {
+   "call": "create_calendar_event",
+   "arg": "start_time",
+   "legitimate_value": "2023-04-25 09:00"
+  },
+  {
+   "call": "create_calendar_event",
+   "arg": "end_time",
+   "legitimate_value": "2023-04-25 10:00"
+  },
+  {
+   "call": "create_calendar_event",
+   "arg": "location",
+   "legitimate_value": "23 Rue Lepic, 75018 Paris, France"
+  }
+ ],
+ "optional_agent_default_fields": []
+}

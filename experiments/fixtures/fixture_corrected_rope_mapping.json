@@ -1,0 +1,147 @@
+{
+ "iban": {
+  "CA133012400231215421872": {
+   "new": "GB21XFIC38559365216956",
+   "role": "legitimate",
+   "issue": "iban_country_has_no_iban"
+  },
+  "UK12345678901234567890": {
+   "new": "GB94XFIC70527527093095",
+   "role": "legitimate",
+   "issue": "iban_country_code_not_iso"
+  },
+  "US122000000121212121212": {
+   "new": "GB81XFIC54783646483113",
+   "role": "legitimate",
+   "issue": "iban_country_has_no_iban"
+  },
+  "US133000000121212121212": {
+   "new": "GB08XFIC99370166197421",
+   "role": "both",
+   "issue": "iban_country_has_no_iban"
+  },
+  "AC2859610395": {
+   "new": "IE76XFIC17203469145413",
+   "role": "legitimate",
+   "issue": "iban_unknown_country"
+  },
+  "AT6854532054": {
+   "new": "AT621099831518603716",
+   "role": "both",
+   "issue": "iban_length"
+  },
+  "CF8932140215": {
+   "new": "FR9726518622389966602628552",
+   "role": "legitimate",
+   "issue": "iban_length"
+  },
+  "CH5068490582": {
+   "new": "CH1514370515604949440",
+   "role": "legitimate",
+   "issue": "iban_length"
+  },
+  "CH9300762011": {
+   "new": "CH7724958240931124565",
+   "role": "legitimate",
+   "issue": "iban_length"
+  },
+  "CS5430532478": {
+   "new": "CZ5494563937904294270874",
+   "role": "legitimate",
+   "issue": "iban_unknown_country"
+  },
+  "DE8937040044": {
+   "new": "DE95603358206015651005",
+   "role": "legitimate",
+   "issue": "iban_length"
+  },
+  "DH5939281092": {
+   "new": "DK6464901607020050",
+   "role": "legitimate",
+   "issue": "iban_unknown_country"
+  },
+  "SE3550000549": {
+   "new": "SE2195840918071561058165",
+   "role": "legitimate",
+   "issue": "iban_length"
+  },
+  "SE5902959058": {
+   "new": "SE3311228995436662421044",
+   "role": "both",
+   "issue": "iban_length"
+  },
+  "EH9025920092": {
+   "new": "ES0389637161383771224908",
+   "role": "legitimate",
+   "issue": "iban_unknown_country"
+  }
+ },
+ "hostname": {
+  "resume_templates.com": "resume-templates.com",
+  "cs_conference.com": "cs-conference.com",
+  "cs_property.com": "cs-property.com",
+  "my_company.com": "my-company.com",
+  "best_discount.com": "best-discount.com",
+  "github_receive_invitation.com": "github-receive-invitation.com",
+  "hi_discount.com": "hi-discount.com"
+ },
+ "text_edits": [
+  {
+   "suite": "banking",
+   "file": "autodojo/src/agentdojo/data/suites/banking/injection_vectors.yaml",
+   "old": "Total\\\\t\\\\t\\\\t98.70\\\\n",
+   "new": "Total\\\\t\\\\t\\\\t98.70\\\\nCurrency: GBP\\\\n",
+   "reason": "bill states no currency (banking expected outputs use GBP)"
+  }
+ ],
+ "base": {
+  "repo": "external/ROPE",
+  "commit": "64495e16e640d687e06e6b1b6cee6dccc5b9b7cb",
+  "variant": "fixture_corrected",
+  "files_changed": [
+   "autodojo/src/agentdojo/data/suites/banking/environment.yaml",
+   "autodojo/src/agentdojo/data/suites/banking/injection_vectors.yaml",
+   "autodojo/src/agentdojo/data/suites/dailylife/include/bank_database.yaml",
+   "autodojo/src/agentdojo/data/suites/dailylife/include/email_database.yaml",
+   "autodojo/src/agentdojo/data/suites/dailylife/include/filesystem.yaml",
+   "autodojo/src/agentdojo/data/suites/dailylife/include/shopping_platform.yaml",
+   "autodojo/src/agentdojo/data/suites/dailylife/include/web_database.yaml",
+   "autodojo/src/agentdojo/data/suites/github/include/bank_database.yaml",
+   "autodojo/src/agentdojo/data/suites/github/include/email_database.yaml",
+   "autodojo/src/agentdojo/data/suites/github/include/filesystem.yaml",
+   "autodojo/src/agentdojo/data/suites/github/include/shopping_platform.yaml",
+   "autodojo/src/agentdojo/data/suites/github/include/web_database.yaml",
+   "autodojo/src/agentdojo/data/suites/shopping/include/bank_database.yaml",
+   "autodojo/src/agentdojo/data/suites/shopping/include/email_database.yaml",
+   "autodojo/src/agentdojo/data/suites/shopping/include/filesystem.yaml",
+   "autodojo/src/agentdojo/data/suites/shopping/include/shopping_platform.yaml",
+   "autodojo/src/agentdojo/data/suites/shopping/include/web_database.yaml",
+   "autodojo/src/agentdojo/default_suites/v1/banking/injection_tasks.py",
+   "autodojo/src/agentdojo/default_suites/v1/banking/user_tasks.py",
+   "autodojo/src/agentdojo/default_suites/v1/banking_v2_0/injection_tasks.py",
+   "autodojo/src/agentdojo/default_suites/v1/banking_v2_0/user_tasks.py",
+   "autodojo/src/agentdojo/default_suites/v1/banking_v2_1/injection_tasks.py",
+   "autodojo/src/agentdojo/default_suites/v1/banking_v2_1/user_tasks.py",
+   "autodojo/src/agentdojo/default_suites/v1/banking_v2_2/injection_tasks.py",
+   "autodojo/src/agentdojo/default_suites/v1/banking_v2_2/user_tasks.py",
+   "autodojo/src/agentdojo/default_suites/v1/banking_v2_3/injection_tasks.py",
+   "autodojo/src/agentdojo/default_suites/v1/banking_v2_3/user_tasks.py",
+   "autodojo/src/agentdojo/default_suites/v1/banking_v2_4/injection_tasks.py",
+   "autodojo/src/agentdojo/default_suites/v1/banking_v2_4/user_tasks.py",
+   "autodojo/src/agentdojo/default_suites/v1/dailylife/injection_tasks.py",
+   "autodojo/src/agentdojo/default_suites/v1/dailylife/user_tasks.py",
+   "autodojo/src/agentdojo/default_suites/v1/github/user_tasks.py",
+   "autodojo/src/agentdojo/default_suites/v1/shopping/injection_tasks.py",
+   "autodojo/src/agentdojo/default_suites/v1/shopping/user_tasks.py",
+   "autodojo/src/agentdojo/default_suites/v1/tools/github_client.py",
+   "autodojo/src/agentdojo/default_suites/v1/tools/shopping_client.py",
+   "autodojo/src/agentdojo/default_suites/v1_1_1/banking/user_tasks.py",
+   "autodojo/src/agentdojo/default_suites/v1_2/banking/injection_tasks.py",
+   "autodojo/src/agentdojo/default_suites/v1_2_2/banking/user_tasks.py",
+   "src/rope/scopes/gemini-3-flash/dailylife.json",
+   "src/rope/scopes/gpt-oss-20b/dailylife.json",
+   "src/rope/scopes/opus/banking.json",
+   "src/rope/scopes/opus/dailylife.json"
+  ]
+ }
+}

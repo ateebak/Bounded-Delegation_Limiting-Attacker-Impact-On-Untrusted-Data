@@ -1,0 +1,32 @@
+{
+ "currency": "USD",
+ "unit": "per 1M tokens (standard tier, no batch discount)",
+ "sources": {
+  "openai": {"url": "https://developers.openai.com/api/docs/pricing", "retrieved": "2026-09-30", "note": "Standard tier; gpt-5.6-terra and gpt-5.6-luna not listed on the page"},
+  "anthropic": {"url": "claude-api skill model table (cached 2026-09-25); verify against https://www.anthropic.com/pricing before reporting", "retrieved": "2026-09-30"},
+  "nim": {"note": "NVIDIA NIM free tier: no charge to us"},
+  "ollama": {"note": "local: no charge"}
+ },
+ "user_reported_free_allotment": {
+  "openai": ["gpt-5.4", "gpt-5.2", "gpt-5.1", "gpt-5", "gpt-4.1", "gpt-4o", "o1", "o3", "gpt-5.4-mini", "gpt-5.4-nano", "gpt-5-mini", "gpt-5-nano", "gpt-4.1-mini", "gpt-4.1-nano", "gpt-4o-mini", "o3-mini", "o4-mini"],
+  "note": "The user reported (2026-09-30) free usage for these OpenAI models. The ledger still records list-price-equivalent USD for them, flagged free_allotment=true, so real spend = sum of non-free rows. The allotment size is unknown; watch the OpenAI usage dashboard."
+ },
+ "openai": {
+  "gpt-6-astra": [10.00, 1.00, 50.00], "gpt-6.1-sol": [2.00, 0.10, 10.00], "gpt-6-luna": [0.10, 0.01, 0.50],
+  "gpt-6-sol": [2.00, 0.20, 10.00], "gpt-5.6-sol": [4.00, 0.40, 20.00], "gpt-5.5": [5.00, 0.50, 30.00],
+  "gpt-5.4": [2.50, 0.25, 15.00], "gpt-5.4-mini": [0.75, 0.075, 4.50], "gpt-5.4-nano": [0.20, 0.02, 1.25],
+  "gpt-5.2": [1.75, 0.175, 14.00], "gpt-5.1": [1.25, 0.125, 10.00], "gpt-5": [1.25, 0.125, 10.00],
+  "gpt-5-mini": [0.25, 0.025, 2.00], "gpt-5-nano": [0.05, 0.005, 0.40], "gpt-4.1": [2.00, 0.50, 8.00],
+  "gpt-4.1-mini": [0.40, 0.10, 1.60], "gpt-4.1-nano": [0.10, 0.025, 0.40], "gpt-4o": [2.50, 1.25, 10.00],
+  "gpt-4o-mini": [0.15, 0.075, 0.60], "o1": [15.00, 7.50, 60.00], "o3": [2.00, 0.50, 8.00],
+  "o3-mini": [1.10, 0.55, 4.40], "o4-mini": [1.10, 0.275, 4.40],
+  "_columns": ["input", "cached_input", "output"]
+ },
+ "anthropic": {
+  "claude-fable-5-1": [10.00, 1.00, 50.00], "claude-opus-5-5": [4.00, 0.20, 20.00], "claude-opus-5": [5.00, 0.50, 25.00],
+  "claude-opus-4-7": [5.00, 0.50, 25.00], "claude-sonnet-5-5": [2.00, 0.20, 10.00], "claude-sonnet-5": [2.00, 0.20, 10.00],
+  "claude-sonnet-4-6": [3.00, 0.30, 15.00], "claude-haiku-4-5": [1.00, 0.10, 5.00],
+  "_columns": ["input", "cache_read", "output"],
+  "_note": "Cache-read prices for opus-5, opus-4-7, sonnet-4-6 and haiku assumed to be 0.1x input (standard ratio); cache writes (1.25x) not modelled because the probes don't use caching."
+ }
+}

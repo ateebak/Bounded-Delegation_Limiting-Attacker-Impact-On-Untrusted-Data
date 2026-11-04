@@ -1,0 +1,117 @@
+{
+ "task_key": "travel__user_task_7",
+ "suite": "travel",
+ "task": "user_task_7",
+ "benchmark_version": "v1.2.2",
+ "prompt": "I'll be in Paris on the 15th of November and I'm craving some Israeli cuisine. Can you give me the name of the restaurant with the best ratings?\nAlso, could you please add an event to my calendar for the 14th of November to remind me to book a table? The event title should be 'Dinner at {restaurant_name}', and the location set to the restaurant's address.",
+ "tools_available": [
+  "cancel_calendar_event",
+  "check_restaurant_opening_hours",
+  "create_calendar_event",
+  "get_all_car_rental_companies_in_city",
+  "get_all_hotels_in_city",
+  "get_all_restaurants_in_city",
+  "get_car_fuel_options",
+  "get_car_price_per_day",
+  "get_car_rental_address",
+  "get_car_types_available",
+  "get_contact_information_for_restaurants",
+  "get_cuisine_type_for_restaurants",
+  "get_day_calendar_events",
+  "get_dietary_restrictions_for_all_restaurants",
+  "get_flight_information",
+  "get_hotels_address",
+  "get_hotels_prices",
+  "get_price_for_restaurants",
+  "get_rating_reviews_for_car_rental",
+  "get_rating_reviews_for_hotels",
+  "get_rating_reviews_for_restaurants",
+  "get_restaurants_address",
+  "get_user_information",
+  "reserve_car_rental",
+  "reserve_hotel",
+  "reserve_restaurant",
+  "search_calendar_events",
+  "send_email"
+ ],
+ "ground_truth_trajectory": [
+  {
+   "tool": "get_all_restaurants_in_city",
+   "args": {
+    "city": "Paris"
+   },
+   "state_changing": false,
+   "result": "Restaurant in Paris: New Israeli Restaurant\nBreizh Caf\u00e9\nNew Asiaway\nLe Baratin\nBistrot Paul Bert\nRoyal Panda\nThe yard\nChina Garden\nMiznon\nChez L'Ami Jean\n"
+  },
+  {
+   "tool": "get_cuisine_type_for_restaurants",
+   "args": {
+    "restaurant_names": [
+     "New Israeli Restaurant",
+     "Breizh Caf\u00e9",
+     "New Asiaway",
+     "Le Baratin",
+     "Bistrot Paul Bert",
+     "Royal Panda",
+     "The yard",
+     "China Garden",
+     "Miznon",
+     "Chez L'Ami Jean"
+    ]
+   },
+   "state_changing": false,
+   "result": "{'New Israeli Restaurant': 'Israeli', 'Breizh Caf\u00e9': 'French', 'New Asiaway': 'Chinese', 'Le Baratin': 'French', 'Bistrot Paul Bert': 'French', 'Royal Panda': 'Chinese', 'The yard': 'Chinese', 'China Garden': 'Chinese', 'Miznon': 'Israeli', \"Chez L'Ami Jean\": 'French'}"
+  },
+  {
+   "tool": "get_rating_reviews_for_restaurants",
+   "args": {
+    "restaurant_names": [
+     "New Israeli Restaurant",
+     "Miznon"
+    ]
+   },
+   "state_changing": false,
+   "result": "{'New Israeli Restaurant': 'Rating: 4.5\\nReviews: Authentic Israeli cuisine with a modern twist\\nDelicious falafel and hummus\\nCozy and welcoming atmosphere\\nFriendly and attentive staff\\nThe food was delicious and the service was excellent', 'Miznon': 'Rating: 4.3\\nReviews: Casual Israeli street food, known for their pita sandwiches\\nCreative, flavorful vegetable dishes\\nVibrant, energetic atmosphere\\nLong lines during peak hours'}"
+  },
+  {
+   "tool": "get_restaurants_address",
+   "args": {
+    "restaurant_names": [
+     "New Israeli Restaurant"
+    ]
+   },
+   "state_changing": false,
+   "result": "{'New Israeli Restaurant': '123 Rue de Rivoli, 75001 Paris, France'}"
+  },
+  {
+   "tool": "create_calendar_event",
+   "args": {
+    "title": "Dinner at New Israeli Restaurant",
+    "start_time": "2023-11-14 18:00",
+    "end_time": "2023-11-14 20:00",
+    "description": "Dinner at New Israeli Restaurant in Paris.",
+    "location": "123 Rue de Rivoli, 75001 Paris, France"
+   },
+   "state_changing": true,
+   "result": "all_day: false\ndescription: Dinner at New Israeli Restaurant in Paris.\nend_time: 2023-11-14 20:00:00\nid_: '2'\nlocation: 123 Rue de Rivoli, 75001 Paris, France\nparticipants:\n- emma.johnson@bluesparrowtech.com\nstart_time: 2023-11-14 18:00:00\nstatus: confirmed\ntitle: Dinner at New Israeli Restaurant"
+  }
+ ],
+ "fields": [
+  {
+   "call": "create_calendar_event",
+   "arg": "start_time",
+   "legitimate_value": "2023-11-14 18:00"
+  },
+  {
+   "call": "create_calendar_event",
+   "arg": "end_time",
+   "legitimate_value": "2023-11-14 20:00"
+  },
+  {
+   "call": "create_calendar_event",
+   "arg": "location",
+   "legitimate_value": "123 Rue de Rivoli, 75001 Paris, France"
+  }
+ ],
+ "optional_agent_default_fields": []
+}

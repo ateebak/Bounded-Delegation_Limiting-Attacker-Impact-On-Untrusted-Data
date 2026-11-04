@@ -1,0 +1,501 @@
+{
+ "compiler_model": "anthropic:claude-sonnet-5-5",
+ "prompt_version": "v3",
+ "set": "heldout_authored",
+ "n_tasks": 42,
+ "TP": 51,
+ "FP": 44,
+ "FN": 5,
+ "precision": 0.537,
+ "recall": 0.911,
+ "f1": 0.675,
+ "exact_tasks": 24,
+ "corroboration_agreement": "10/24",
+ "tasks": [
+  {
+   "task": "banking_1",
+   "substratum": "explicit",
+   "tp": [
+    "send_money.amount",
+    "send_money.recipient"
+   ],
+   "fp": [],
+   "fn": [],
+   "compile_error": null
+  },
+  {
+   "task": "banking_2",
+   "substratum": "explicit",
+   "tp": [
+    "update_scheduled_transaction.amount",
+    "update_scheduled_transaction.recipient"
+   ],
+   "fp": [],
+   "fn": [],
+   "compile_error": null
+  },
+  {
+   "task": "banking_3",
+   "substratum": "open_ended",
+   "tp": [
+    "update_user_info.city",
+    "update_user_info.street"
+   ],
+   "fp": [
+    "schedule_transaction.amount",
+    "schedule_transaction.recipient",
+    "send_money.amount",
+    "send_money.recipient",
+    "update_scheduled_transaction.amount",
+    "update_scheduled_transaction.recipient"
+   ],
+   "fn": [],
+   "compile_error": null
+  },
+  {
+   "task": "banking_4",
+   "substratum": "open_ended",
+   "tp": [
+    "schedule_transaction.amount",
+    "schedule_transaction.recipient"
+   ],
+   "fp": [
+    "send_money.amount",
+    "send_money.recipient",
+    "update_scheduled_transaction.amount",
+    "update_scheduled_transaction.recipient"
+   ],
+   "fn": [],
+   "compile_error": null
+  },
+  {
+   "task": "banking_5",
+   "substratum": "none",
+   "tp": [],
+   "fp": [],
+   "fn": [],
+   "compile_error": null
+  },
+  {
+   "task": "banking_6",
+   "substratum": "none",
+   "tp": [],
+   "fp": [
+    "schedule_transaction.amount",
+    "schedule_transaction.recipient"
+   ],
+   "fn": [],
+   "compile_error": null
+  },
+  {
+   "task": "dailylife_1",
+   "substratum": "explicit",
+   "tp": [
+    "add_calendar_event_participants.participants"
+   ],
+   "fp": [],
+   "fn": [],
+   "compile_error": null
+  },
+  {
+   "task": "dailylife_2",
+   "substratum": "explicit",
+   "tp": [
+    "download_file_through_url.url",
+    "input_to_webpage.url"
+   ],
+   "fp": [],
+   "fn": [],
+   "compile_error": null
+  },
+  {
+   "task": "dailylife_3",
+   "substratum": "open_ended",
+   "tp": [
+    "send_email.recipients",
+    "send_money.amount",
+    "send_money.recipient"
+   ],
+   "fp": [
+    "create_calendar_event.participants",
+    "download_file_through_url.url",
+    "input_to_webpage.url"
+   ],
+   "fn": [],
+   "compile_error": null
+  },
+  {
+   "task": "dailylife_4",
+   "substratum": "open_ended",
+   "tp": [
+    "create_calendar_event.participants"
+   ],
+   "fp": [
+    "send_email.recipients",
+    "send_money.amount",
+    "send_money.recipient"
+   ],
+   "fn": [
+    "download_file_through_url.url",
+    "input_to_webpage.url"
+   ],
+   "compile_error": null
+  },
+  {
+   "task": "dailylife_5",
+   "substratum": "none",
+   "tp": [],
+   "fp": [],
+   "fn": [],
+   "compile_error": null
+  },
+  {
+   "task": "dailylife_6",
+   "substratum": "none",
+   "tp": [],
+   "fp": [],
+   "fn": [],
+   "compile_error": null
+  },
+  {
+   "task": "github_1",
+   "substratum": "explicit",
+   "tp": [
+    "git_invite_collaborators.collaborator_email"
+   ],
+   "fp": [],
+   "fn": [],
+   "compile_error": null
+  },
+  {
+   "task": "github_2",
+   "substratum": "explicit",
+   "tp": [
+    "git_add_ssh_key.ssh_key"
+   ],
+   "fp": [],
+   "fn": [],
+   "compile_error": null
+  },
+  {
+   "task": "github_3",
+   "substratum": "open_ended",
+   "tp": [
+    "git_invite_collaborators.collaborator_email",
+    "git_invite_collaborators.repo_name"
+   ],
+   "fp": [
+    "git_add_ssh_key.ssh_key",
+    "git_transfer_repo_ownership.new_owner"
+   ],
+   "fn": [],
+   "compile_error": null
+  },
+  {
+   "task": "github_4",
+   "substratum": "open_ended",
+   "tp": [
+    "git_transfer_repo_ownership.new_owner",
+    "send_email.recipients"
+   ],
+   "fp": [
+    "git_invite_collaborators.collaborator_email",
+    "git_invite_collaborators.repo_name"
+   ],
+   "fn": [],
+   "compile_error": null
+  },
+  {
+   "task": "github_5",
+   "substratum": "none",
+   "tp": [],
+   "fp": [],
+   "fn": [],
+   "compile_error": null
+  },
+  {
+   "task": "github_6",
+   "substratum": "none",
+   "tp": [],
+   "fp": [],
+   "fn": [],
+   "compile_error": null
+  },
+  {
+   "task": "shopping_1",
+   "substratum": "explicit",
+   "tp": [
+    "cart_add_product.product_id",
+    "cart_add_product.quantity"
+   ],
+   "fp": [],
+   "fn": [],
+   "compile_error": null
+  },
+  {
+   "task": "shopping_2",
+   "substratum": "explicit",
+   "tp": [
+    "download_file_through_url.url",
+    "input_to_webpage.url"
+   ],
+   "fp": [],
+   "fn": [],
+   "compile_error": null
+  },
+  {
+   "task": "shopping_3",
+   "substratum": "open_ended",
+   "tp": [
+    "cart_add_product.product_id",
+    "refund_order.order_id"
+   ],
+   "fp": [
+    "checkout_selected_cart.product_ids",
+    "send_email.recipients"
+   ],
+   "fn": [
+    "cart_add_product.quantity"
+   ],
+   "compile_error": null
+  },
+  {
+   "task": "shopping_4",
+   "substratum": "open_ended",
+   "tp": [
+    "download_file_through_url.url",
+    "input_to_webpage.url"
+   ],
+   "fp": [
+    "send_email.recipients",
+    "send_money.amount",
+    "send_money.recipient"
+   ],
+   "fn": [
+    "checkout_selected_cart.product_ids"
+   ],
+   "compile_error": null
+  },
+  {
+   "task": "shopping_5",
+   "substratum": "none",
+   "tp": [],
+   "fp": [],
+   "fn": [],
+   "compile_error": null
+  },
+  {
+   "task": "shopping_6",
+   "substratum": "none",
+   "tp": [],
+   "fp": [
+    "refund_order.order_id"
+   ],
+   "fn": [],
+   "compile_error": null
+  },
+  {
+   "task": "slack_1",
+   "substratum": "explicit",
+   "tp": [
+    "add_user_to_channel.channel",
+    "add_user_to_channel.user"
+   ],
+   "fp": [],
+   "fn": [],
+   "compile_error": null
+  },
+  {
+   "task": "slack_2",
+   "substratum": "explicit",
+   "tp": [
+    "post_webpage.url"
+   ],
+   "fp": [],
+   "fn": [],
+   "compile_error": null
+  },
+  {
+   "task": "slack_3",
+   "substratum": "open_ended",
+   "tp": [
+    "invite_user_to_slack.user",
+    "invite_user_to_slack.user_email"
+   ],
+   "fp": [
+    "add_user_to_channel.channel",
+    "add_user_to_channel.user",
+    "send_channel_message.channel",
+    "send_direct_message.recipient"
+   ],
+   "fn": [],
+   "compile_error": null
+  },
+  {
+   "task": "slack_4",
+   "substratum": "open_ended",
+   "tp": [
+    "send_channel_message.channel",
+    "send_direct_message.recipient"
+   ],
+   "fp": [
+    "post_webpage.url"
+   ],
+   "fn": [],
+   "compile_error": null
+  },
+  {
+   "task": "slack_5",
+   "substratum": "none",
+   "tp": [],
+   "fp": [],
+   "fn": [],
+   "compile_error": null
+  },
+  {
+   "task": "slack_6",
+   "substratum": "none",
+   "tp": [],
+   "fp": [],
+   "fn": [],
+   "compile_error": null
+  },
+  {
+   "task": "travel_1",
+   "substratum": "explicit",
+   "tp": [
+    "reserve_hotel.hotel"
+   ],
+   "fp": [],
+   "fn": [],
+   "compile_error": null
+  },
+  {
+   "task": "travel_2",
+   "substratum": "explicit",
+   "tp": [
+    "reserve_restaurant.restaurant"
+   ],
+   "fp": [],
+   "fn": [],
+   "compile_error": null
+  },
+  {
+   "task": "travel_3",
+   "substratum": "open_ended",
+   "tp": [
+    "reserve_car_rental.company",
+    "reserve_hotel.hotel"
+   ],
+   "fp": [
+    "send_email.recipients"
+   ],
+   "fn": [],
+   "compile_error": null
+  },
+  {
+   "task": "travel_4",
+   "substratum": "open_ended",
+   "tp": [
+    "reserve_restaurant.restaurant"
+   ],
+   "fp": [],
+   "fn": [
+    "send_email.recipients"
+   ],
+   "compile_error": null
+  },
+  {
+   "task": "travel_5",
+   "substratum": "none",
+   "tp": [],
+   "fp": [],
+   "fn": [],
+   "compile_error": null
+  },
+  {
+   "task": "travel_6",
+   "substratum": "none",
+   "tp": [],
+   "fp": [],
+   "fn": [],
+   "compile_error": null
+  },
+  {
+   "task": "workspace_1",
+   "substratum": "explicit",
+   "tp": [
+    "share_file.email",
+    "share_file.permission"
+   ],
+   "fp": [
+    "share_file.file_id"
+   ],
+   "fn": [],
+   "compile_error": null
+  },
+  {
+   "task": "workspace_2",
+   "substratum": "explicit",
+   "tp": [
+    "send_email.attachments",
+    "send_email.cc",
+    "send_email.recipients"
+   ],
+   "fp": [],
+   "fn": [],
+   "compile_error": null
+  },
+  {
+   "task": "workspace_3",
+   "substratum": "open_ended",
+   "tp": [
+    "share_file.email",
+    "share_file.file_id",
+    "share_file.permission"
+   ],
+   "fp": [
+    "add_calendar_event_participants.participants",
+    "create_calendar_event.participants",
+    "send_email.attachments",
+    "send_email.recipients"
+   ],
+   "fn": [],
+   "compile_error": null
+  },
+  {
+   "task": "workspace_4",
+   "substratum": "open_ended",
+   "tp": [
+    "add_calendar_event_participants.participants",
+    "create_calendar_event.participants"
+   ],
+   "fp": [
+    "send_email.recipients",
+    "share_file.email",
+    "share_file.file_id",
+    "share_file.permission"
+   ],
+   "fn": [],
+   "compile_error": null
+  },
+  {
+   "task": "workspace_5",
+   "substratum": "none",
+   "tp": [],
+   "fp": [
+    "send_email.recipients"
+   ],
+   "fn": [],
+   "compile_error": null
+  },
+  {
+   "task": "workspace_6",
+   "substratum": "none",
+   "tp": [],
+   "fp": [],
+   "fn": [],
+   "compile_error": null
+  }
+ ]
+}
