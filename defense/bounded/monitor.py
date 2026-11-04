@@ -20,6 +20,7 @@ from .envelope import TABLE, FieldEnvelope, TaskEnvelope, never_delegable
 from .origin import OriginTracker
 
 TRUSTED = {"T1", "T3"}
+ABLATIONS = {"aggregate", "once", "family", "corroboration", "closure", "staging", "origin"}  # D-055
 
 
 @dataclass
@@ -75,7 +76,7 @@ class ConfirmationSimulator:
 class BoundedMonitor:
     def __init__(self, envelope: TaskEnvelope, tracker: OriginTracker, simulator: ConfirmationSimulator,
                  commit_on_success: bool = False, escalate_unlisted: bool = False, hard_caps: bool = False,
-                 reference=None, rel_max: float | None = None, rel_mode: str = "replace", ask_family=None):
+                 reference=None, rel_max: float | None = None, rel_mode: str = "replace", ask_family=None, ablate=()):
         """commit_on_success (D-031): once/family/aggregate bookkeeping for an EXECUTED call is applied only when the
         caller reports success via commit(); a failed call (tool error) leaves no effect, so a retry isn't a second
         use. Staged actions count at decision time (staging is the effect). Record-closure taint is always applied
@@ -107,6 +108,13 @@ class BoundedMonitor:
         # Values named in the request (trusted origin) are not delegated uses and are never counted. Targets the
         # F-A5 download fan-out without hard-denying tasks that legitimately need two (dailylife ut14). None = off.
         self.ask_family = dict(ask_family or {})
+        # D-055 component ablations: switch one mechanism off. aggregate | once | family | corroboration | closure |
+        # staging (attachments / write access execute instead of staging) | origin ("plain policy", spec §9.1: the
+        # same bounds applied to every sensitive value with no origin conditioning and no delegation: nothing is
+        # trusted, every tabled field is capped like a delegated field, and nothing goes to the user).
+        unknown = set(ablate) - ABLATIONS
+        if unknown: raise ValueError(f"unknown ablation(s): {sorted(unknown)}")
+        self.ablate = frozenset(ablate)
 
     def _eff_cap(self, tool, args, cap):
         if cap is None or self.rel_max is None or self.reference is None or self.env.request_cap is not None:
@@ -138,7 +146,7 @@ class BoundedMonitor:
                 self._pending[(tool, repr(sorted((k, repr(v)) for k, v in args.items())))] = True
             else:
                 self._count(tool, args, d.action)
-        if d.action in ("execute", "stage"):  # record closure: everything this effect writes stays untrusted
+        if d.action in ("execute", "stage") and "closure" not in self.ablate:  # record closure: written values stay untrusted
             for arg in TABLE.get(tool, {}):
                 if not arg.startswith("_"):
                     for v in _scalars(args.get(arg)): self.tracker.note_written(v)
@@ -154,8 +162,12 @@ class BoundedMonitor:
         for arg, role in spec.items():
             if arg.startswith("_") or args.get(arg) in (None, [], ""): continue
             fe = self.env.get(tool, arg)
+            if "origin" in self.ablate and fe is None:  # plain policy: every tabled field is bounded like a delegated one
+                cap = self.env.request_cap if self.env.request_cap is not None else self.env.ceiling
+                fe = self.env.fields[(tool, arg)] = FieldEnvelope(tool, arg, role, delegated=True,
+                                                                  abs_max=cap if role == "magnitude" else None)
             for v in _scalars(args[arg]):
-                org = self.tracker.origin(v)
+                org = set() if "origin" in self.ablate else self.tracker.origin(v)
                 if org & TRUSTED and not (role == "magnitude" and fe is not None):
                     continue
                 if fe is None:
@@ -169,9 +181,9 @@ class BoundedMonitor:
                     delegated_used = True
                     continue
                 delegated_used = True
-                if fe.corroborate and "T3" not in org:
+                if fe.corroborate and "T3" not in org and not self.ablate & {"corroboration", "origin"}:
                     violation = violation or f"{arg}={v!r} not corroborated by a trusted record"
-                if (tool, arg, str(v)) in self.used_once:
+                if (tool, arg, str(v)) in self.used_once and "once" not in self.ablate:
                     capv.append(f"{arg} already used once")
                 if role == "magnitude" and fe.abs_max is not None:
                     try:
@@ -184,10 +196,10 @@ class BoundedMonitor:
             try: amt = float(args.get("amount") or 0)
             except (TypeError, ValueError): amt = 0.0
             c = self._eff_cap(tool, args, fe_amt.abs_max) if fe_amt is not None else None
-            if c is not None and self.paid_total + amt > c:
+            if c is not None and self.paid_total + amt > c and "aggregate" not in self.ablate:
                 capv.append(f"aggregate {self.paid_total + amt:g} > cap {c} (split payments count together)")
         cap = self.env.family_cap.get(fam)
-        if delegated_used and cap is not None and self.family_count.get(fam, 0) >= cap:
+        if delegated_used and cap is not None and self.family_count.get(fam, 0) >= cap and "family" not in self.ablate:
             capv.append(f"family '{fam}' per-task cap {cap} reached")
         acap = self.ask_family.get(fam)
         if delegated_used and acap is not None and self.family_count.get(fam, 0) >= acap:
@@ -216,7 +228,7 @@ class BoundedMonitor:
             return self._finish(tool, args, Decision("denied_envelope", "deny", violation + "; not approved"))
         grants_write = (tool == "share_file" and str(args.get("permission", "")).lower() in ("rw", "w", "write", "edit")) \
             or tool == "git_invite_collaborators"
-        if delegated_used and (bool(args.get("attachments")) or grants_write):
+        if delegated_used and (bool(args.get("attachments")) or grants_write) and "staging" not in self.ablate:
             return self._finish(tool, args, Decision("allowed_staged", "stage", "attachment or write access"), delegated_used)
         if delegated_used and fam == "payment" and self.env.mode == "B":
             return self._finish(tool, args, Decision("allowed_staged", "stage", "mode B"), delegated_used)

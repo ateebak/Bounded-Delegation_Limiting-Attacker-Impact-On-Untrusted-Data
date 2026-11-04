@@ -162,6 +162,9 @@ def main():
     ap.add_argument("--ask-family", default="",
                     help="bounded: comma list of families (e.g. download,web_submit) whose delegated uses beyond 1 per task go "
                          "to the user (D-052 post-hoc ablation). Default off")
+    ap.add_argument("--ablate", default="",
+                    help="bounded: comma list of components to switch off (D-055 component ablations): aggregate, once, "
+                         "family, corroboration, closure, staging, origin (plain policy without origin conditioning). Default none")
     ap.add_argument("--compiler-prompt", default="v2", choices=["v1", "v2", "v3"], help="LLM compiler prompt version (D-026, D-032)")
     ap.add_argument("--sim", default="perfect", help="perfect | rubber_stamp | plausible:<p>")
     ap.add_argument("--tasks", nargs="*", default=None, help="task keys; default = gold main stratum")
@@ -318,7 +321,8 @@ def main():
                                          escalate_unlisted=(a.unlisted == "ask"),  # D-035
                                          hard_caps=(a.caps == "hard"),  # D-039
                                          reference=make_reference(pre), rel_max=a.rel_max,  # D-043
-                                         rel_mode=a.rel_mode, ask_family={f: 1 for f in a.ask_family.split(",") if f})  # D-052
+                                         rel_mode=a.rel_mode, ask_family={f: 1 for f in a.ask_family.split(",") if f},  # D-052
+                                         ablate={x for x in a.ablate.split(",") if x})  # D-055
                 inner = runtime.run_function
                 def guarded(self_rt, call_env, fn, args, raise_on_error=False, _inner=inner):
                     d = monitor.decide(fn, dict(args))

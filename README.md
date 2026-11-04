@@ -21,5 +21,5 @@ Reproduce (Python 3.12; `pip install pytest matplotlib`):
   regenerate the analysis outputs from the run records.
 - Re-running agents needs the third-party benchmark/baseline checkouts and model API access (not included).
 
-Third-party code (AgentDojo/AgentDyn via ROPE's AutoDojo fork, ROPE, Progent, DRIFT, CaMeL) is not redistributed;
+License: Apache-2.0 (`LICENSE`). Third-party code (AgentDojo/AgentDyn via ROPE's AutoDojo fork, ROPE, Progent, DRIFT, CaMeL) is not redistributed;
 pinned versions are listed in `experiments/harness/` and the paper.
