@@ -18,12 +18,13 @@ OUT = ROOT / "paper/generated"
 sys.path.insert(0, str(ROOT / "experiments/harness"))
 import analyze_repeats as A
 
-# Analysis outputs the paper may cite (findings F-17..F-37, F-A3..F-A6, F-P1..F-P3).
+# Analysis outputs the paper may cite (findings F-17..F-48, F-A3..F-A6, F-P1..F-P3).
 TAGS = ["pilot_repeats", "pilot_repeats_v4", "eval-s1", "eval-s1-simsweep", "eval-s1b-progent-approver",
         "eval-s1c-hardcaps", "eval-s1d-plausible-fixseed", "eval-s2", "eval-s3-authored-v2", "eval-s4-nemotron",
         "eval-s7-sonnet", "eval-s7-gpt61", "eval-s8a-main", "eval-s8a-adaptive", "eval-s8b-replicate",
         "eval-s8b-nemotron", "eval-s8b-sonnet", "eval-s8b-gpt61", "eval-s8c-adaptive", "eval-s9-glm53",
-        "eval-s10-minimax", "eval-d052-ablations", "eval-d055-components"]
+        "eval-s10-minimax", "eval-d052-ablations", "eval-d055-components",
+        "eval-d056-gemma-adp", "eval-d056-nemotron"]
 COMPILER = {"dev": "", "dev-v1": "_prompt-v1", "heldout": "_v2_heldout_authored"}
 # Burden is computed for these (tag, condition) pairs.
 BURDEN = [("eval-s8a-main", "new_perfect"), ("eval-s8a-main", "new_rubber"), ("eval-s8b-replicate", "nemotron_new"),
@@ -37,7 +38,11 @@ BURDEN = [("eval-s8a-main", "new_perfect"), ("eval-s8a-main", "new_rubber"), ("e
          [("eval-s2", c) for c in ("c100", "c250", "c500", "c1000", "cnone")] + \
          [("eval-d055-components", c) for c in ("new", "fa5", "policy", "no_askonce", "no_once", "no_aggregate", "no_family",
                                                  "no_corroboration", "no_closure", "no_staging", "adp_policy", "adp_no_once",
-                                                 "adp_no_aggregate", "adp_no_once_aggregate", "adp_no_family")]
+                                                 "adp_no_aggregate", "adp_no_once_aggregate", "adp_no_family")] + \
+         [("eval-d056-gemma-adp", c) for c in ("adp_no_askonce", "adp_no_corroboration", "adp_no_closure", "adp_no_staging")] + \
+         [("eval-d056-nemotron", c) for c in ("new", "policy", "no_askonce", "no_once", "no_aggregate", "no_family",
+                                               "no_corroboration", "no_closure", "no_staging", "adp_full", "adp_policy",
+                                               "adp_no_askonce", "adp_no_corroboration")]
 
 # Main results (five main models, D-051). "ours" = final design (LLM compiler v2, hard caps, ask-once, perfect user,
 # ceiling 500, rel_max 0.10, credentials never delegable). Sources as cited in F-30, F-32, F-33, F-34.
@@ -216,24 +221,30 @@ def main():
         "Set & Request kind & Tasks & P & R & F1 & FP & Exact \\\\\n\\midrule\n" + "\n".join(rows)
         + "\n\\bottomrule\n\\end{tabular}\n")
 
-    # Table: component ablations (D-055; gemma). Main corpus: clean utility incl. staging, paired difference to the final
-    # design, prompts per clean episode. Adaptive corpus: beyond-envelope, value-match attack success, max excess paid.
-    T = "eval-d055-components"; ca = an[T]; cc = contrasts(T)
-    comps = [("none (final design)", "new", "fa5"), ("origin conditioning (plain policy)", "policy", "adp_policy"),
-             ("ask-once", "no_askonce", None), ("once per value", "no_once", "adp_no_once"),
-             ("aggregate cap", "no_aggregate", "adp_no_aggregate"), ("once + aggregate cap", None, "adp_no_once_aggregate"),
-             ("family cap", "no_family", "adp_no_family"), ("corroboration", "no_corroboration", None),
-             ("record closure", "no_closure", None), ("staging", "no_staging", None)]
+    # Table: component ablations (D-055 gemma, D-056 gemma adaptive lanes + nemotron), one row block per model. Main
+    # corpus: clean utility incl. staging, paired difference to the final design, prompts per clean episode. Adaptive
+    # corpus: beyond-envelope, value-match attack success, max excess paid.
+    labels = [("none (final design)", "new", "full"), ("origin conditioning (plain policy)", "policy", "policy"),
+              ("ask-once", "no_askonce", "no_askonce"), ("once per value", "no_once", "no_once"),
+              ("aggregate cap", "no_aggregate", "no_aggregate"), ("once + aggregate cap", None, "no_once_aggregate"),
+              ("family cap", "no_family", "no_family"), ("corroboration", "no_corroboration", "no_corroboration"),
+              ("record closure", "no_closure", "no_closure"), ("staging", "no_staging", "no_staging")]
+    G, N = "eval-d055-components", "eval-d056-nemotron"
+    gadp = {"full": (G, "fa5"), **{k: (G, f"adp_{k}") for k in ("policy", "no_once", "no_aggregate", "no_once_aggregate", "no_family")},
+            **{k: ("eval-d056-gemma-adp", f"adp_{k}") for k in ("no_askonce", "no_corroboration", "no_closure", "no_staging")}}
+    nadp = {k: (N, f"adp_{k}") for _, _, k in labels}
+    blocks = [("gemma-4-31b-it", G, gadp), ("nemotron-3.5-lightning", N, nadp)]
     rows = []
-    for lab, m, a in comps:
-        if m:
-            d = "--" if m == "new" else (lambda x: f"{pp(x['mean_diff'])} [{pp(x['ci95'][0])}, {pp(x['ci95'][1])}]")(cc[f"{m} - new"]["incl_staged"])
-            mc = f"{ca[m]['utility_incl_staged']} & {d} & {defs[f'burden/{T}/{m}/clean'][0]}"
-        else: mc = "\\multicolumn{3}{c}{--}"
-        if a:
-            r = ca[a]; ac = f"{r['beyond_envelope']} & {r['attack_success']} & {r['excess_paid_max']:,.0f}"
-        else: ac = "\\multicolumn{3}{c}{--}"
-        rows.append(f"{lab} & {mc} & {ac} \\\\")
+    for bi, (model, T, adp) in enumerate(blocks):
+        ca, cc = an[T], contrasts(T)
+        rows.append(("\\midrule\n" if bi else "") + f"\\multicolumn{{7}}{{@{{}}l}}{{\\emph{{{model}}}}} \\\\")
+        for lab, m, a in labels:
+            if m:
+                d = "--" if m == "new" else (lambda x: f"{pp(x['mean_diff'])} [{pp(x['ci95'][0])}, {pp(x['ci95'][1])}]")(cc[f"{m} - new"]["incl_staged"])
+                mc = f"{ca[m]['utility_incl_staged']} & {d} & {defs[f'burden/{T}/{m}/clean'][0]}"
+            else: mc = "\\multicolumn{3}{c}{--}"
+            at, ac_ = adp[a]; r = an[at][ac_]
+            rows.append(f"\\quad {lab} & {mc} & {r['beyond_envelope']} & {r['attack_success']} & {r['excess_paid_max']:,.0f} \\\\")
     (OUT / "tab_components.tex").write_text(
         "% GENERATED by paper/make_numbers.py; do not edit.\n\\begin{tabular}{@{}lccc@{\\quad}ccc@{}}\n\\toprule\n"
         "& \\multicolumn{3}{c}{Main corpus (clean)} & \\multicolumn{3}{c}{Adaptive attacks} \\\\\n"
